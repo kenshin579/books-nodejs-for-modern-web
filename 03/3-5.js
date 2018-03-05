@@ -1,14 +1,15 @@
 // process.argv
 process.argv.forEach(function (item, index) {
-  // Ãâ·ÂÇÕ´Ï´Ù.
-  console.log(index + ' : ' + typeof (item) + ' : ', item);
-  // ½ÇÇà ¸Å°³º¯¼ö¿¡ --exit°¡ ÀÖÀ» ¶§
-  if (item == '--exit') {
-    // ´ÙÀ½ ½ÇÇà ¸Å°³º¯¼ö¸¦ ¾ò½À´Ï´Ù.
-    var exitTime = Number(process.argv[index + 1]);
-    // ÀÏÁ¤ ½Ã°£ ÈÄ ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù.
-    setTimeout(function () {
-      process.exit();
-    }, exitTime);
-  }
+    // ì¶œë ¥í•©ë‹ˆë‹¤.
+    console.log(index + ' : ' + typeof (item) + ' : ', item);
+    // ì‹¤í–‰ ë§¤ê°œë³€ìˆ˜ì— --exitê°€ ìˆì„ ë•Œ
+    if (item === '--exit') {
+        // ë‹¤ìŒ ì‹¤í–‰ ë§¤ê°œë³€ìˆ˜ë¥¼ ì–»ìŠµë‹ˆë‹¤.
+        var exitTime = Number(process.argv[index + 1]);
+        // ì¼ì • ì‹œê°„ í›„ í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤.
+        setTimeout(function () {
+            console.log("about to exit the program");
+            process.exit();
+        }, exitTime);
+    }
 });

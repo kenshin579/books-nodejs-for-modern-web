@@ -1,11 +1,11 @@
-// ½Ã°£ ÃøÁ¤À» ½ÃÀÛÇÕ´Ï´Ù.
+// ì‹œê°„ ì¸¡ì •ì„ ì‹œì‘í•©ë‹ˆë‹¤.
 console.time('alpha');
 
 var output = 1;
 for (var i = 1; i <= 10; i++) {
-  output *= i;
+    output *= i;
 }
 console.log('Result:', output);
 
-// ½Ã°£ ÃøÁ¤À» Á¾·áÇÕ´Ï´Ù.
+// ì‹œê°„ ì¸¡ì •ì„ ì¢…ë£Œí•©ë‹ˆë‹¤.
 console.timeEnd('alpha');

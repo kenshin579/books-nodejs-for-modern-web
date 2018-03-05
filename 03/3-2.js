@@ -1,3 +1,3 @@
-console.log('¼ıÀÚ: %d + %d = %d', 273, 52, 273 + 52);
-console.log('¹®ÀÚ¿­: %s', 'Hello World .. !', 'Æ¯¼ö ±âÈ£¿Í »ó°ü ¾øÀ½');
-console.log('JSON: %j', { name: 'RintIanTta' });
+console.log('ìˆ«ì: %d + %d = %d', 273, 52, 273 + 52);
+console.log('ë¬¸ìì—´: %s', 'Hello World .. !', 'íŠ¹ìˆ˜ ê¸°í˜¸ì™€ ìƒê´€ ì—†ìŒ');
+console.log('JSON: %j', {name: 'RintIanTta'});
