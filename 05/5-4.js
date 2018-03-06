@@ -1,21 +1,12 @@
-// process ∞¥√ºø° exit ¿Ã∫•∆Æ∏¶ ø¨∞·«’¥œ¥Ÿ.
-process.on('exit', function (code) {
-  console.log('æ»≥Á»˜ ∞°∞≈∂Û ^_^ .. !');
-});
-
-// process ∞¥√ºø° uncaughtException ¿Ã∫•∆Æ∏¶ ø¨∞·«’¥œ¥Ÿ.
-process.on('uncaughtException', function (error) {
-  console.log('øπø‹∞° πﬂª˝«ﬂ±∫ ^_^ ∫¡¡÷∞⁄¥Ÿ ^_^ .. !');
-});
-
-// 2√  ∞£∞›¿∏∑Œ 3π¯ øπø‹∏¶ πﬂª˝Ω√≈µ¥œ¥Ÿ.
-var count = 0;
-var test = function () {
-  // ≈ª√‚ ƒ⁄µÂ
-  count = count + 1;
-  if (count > 3) { return; }
-  // øπø‹∏¶ ∞≠¡¶∑Œ πﬂª˝Ω√≈µ¥œ¥Ÿ.
-  setTimeout(test, 2000);
-  error.error.error();
-};
-setTimeout(test, 2000);
+// Ïù¥Î≤§Ìä∏Î•º Ïó∞Í≤∞Ìï©ÎãàÎã§.
+process.on('exit', function () { });
+process.on('exit', function () { });
+process.on('exit', function () { });
+process.on('exit', function () { });
+process.on('exit', function () { });
+process.on('exit', function () { });
+process.on('exit', function () { });
+process.on('exit', function () { });
+process.on('exit', function () { });
+process.on('exit', function () { });
+process.on('exit', function () { });

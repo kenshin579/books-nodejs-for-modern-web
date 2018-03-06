@@ -1,4 +1,4 @@
-// ÀÌº¥Æ®¸¦ ¿¬°áÇÕ´Ï´Ù.
+// ì´ë²¤íŠ¸ë¥¼ ì—°ê²°í•©ë‹ˆë‹¤.
 process.on('exit', function () { });
 process.on('exit', function () { });
 process.on('exit', function () { });

@@ -1,16 +1,17 @@
-// exit �̺�Ʈ�� �����մϴ�.
+// exit 이벤트를 연결합니다.
 process.on('exit', function (code) {
-  console.log('�ȳ��� �輼�� .. !');
+    console.log('안녕히 계세요 .. !');
 });
 
-// ���α׷��� �����մϴ�.
+// 프로그램을 종료합니다.
 process.exit();
 
-// �̺�Ʈ�� ������ �߻���ŵ�ϴ�.
+//exit() 호출이후에
+//이벤트를 강제로 발생시킵니다.
 process.emit('exit');
 process.emit('exit');
 process.emit('exit');
 process.emit('exit');
 
-// ���α׷� ���� ��
-console.log('���α׷� ���� ��');
+// 프로그램 실행 중
+console.log('프로그램 실행 중');

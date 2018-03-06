@@ -1,7 +1,7 @@
-// ÀÌº¥Æ® ¿¬°á °³¼ö Á¦ÇÑÀ» 15°³±îÁö ´Ã¸³´Ï´Ù.
+// ì´ë²¤íŠ¸ ì—°ê²° ê°œìˆ˜ ì œí•œì„ 15ê°œê¹Œì§€ ëŠ˜ë¦½ë‹ˆë‹¤.
 process.setMaxListeners(15);
 
-// ÀÌº¥Æ®¸¦ ¿¬°áÇÕ´Ï´Ù.
+// ì´ë²¤íŠ¸ë¥¼ ì—°ê²°í•©ë‹ˆë‹¤.
 process.on('exit', function () { });
 process.on('exit', function () { });
 process.on('exit', function () { });

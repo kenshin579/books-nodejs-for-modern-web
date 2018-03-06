@@ -1,4 +1,4 @@
-// exit �̺�Ʈ�� �����մϴ�.
+// exit 이벤트를 연결합니다.
 process.on('exit', function (code) {
-  console.log('�ȳ��� �輼�� .. !');
+    console.log('안녕히 계세요 .. !');
 });

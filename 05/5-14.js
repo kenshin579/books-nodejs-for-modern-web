@@ -1,10 +1,15 @@
-// EventEmitter °´Ã¼¸¦ »ı¼ºÇÕ´Ï´Ù.
-var custom = new process.EventEmitter();
+// EventEmitter ê°ì²´ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
+//processê°ì²´ì•ˆì—ë„ ì¶”ê°€ë˜ì—ˆë‹¤ê³  í•˜ëŠ”ë° ì•ˆë¨
+// var custom = new process.EventEmitter();
 
-// ÀÌº¥Æ®¸¦ ¿¬°áÇÕ´Ï´Ù.
+var events = require('events');
+
+var custom = new events.EventEmitter();
+
+// ì´ë²¤íŠ¸ë¥¼ ì—°ê²°í•©ë‹ˆë‹¤.
 custom.on('tick', function (code) {
-  console.log('ÀÌº¥Æ®¸¦ ½ÇÇàÇÕ´Ï´Ù. ^_^');
+    console.log('ì´ë²¤íŠ¸ë¥¼ ì‹¤í–‰í•©ë‹ˆë‹¤. ^_^');
 });
 
-// ÀÌº¥Æ®¸¦ °­Á¦·Î ¹ß»ı½ÃÅµ´Ï´Ù.
+// ì´ë²¤íŠ¸ë¥¼ ê°•ì œë¡œ ë°œìƒì‹œí‚µë‹ˆë‹¤.
 custom.emit('tick');

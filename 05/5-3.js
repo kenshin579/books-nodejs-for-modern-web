@@ -1,4 +1,4 @@
-// process °´Ã¼¿¡ uncaughtException ÀÌº¥Æ®¸¦ ¿¬°áÇÕ´Ï´Ù.
+// process ê°ì²´ì— uncaughtException ì´ë²¤íŠ¸ë¥¼ ì—°ê²°í•©ë‹ˆë‹¤.
 process.on('uncaughtException', function (error) {
 
 });

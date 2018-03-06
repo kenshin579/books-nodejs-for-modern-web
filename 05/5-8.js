@@ -1,17 +1,17 @@
-// º¯¼ö¸¦ ¼±¾ğÇÕ´Ï´Ù.
+// ë³€ìˆ˜ë¥¼ ì„ ì–¸í•©ë‹ˆë‹¤.
 var onUncaughtException = function (error) {
-  // Ãâ·ÂÇÕ´Ï´Ù.
-  console.log('¿¹¿Ü°¡ ¹ß»ıÇß±º ^_^ ÀÌ¹ø¿¡¸¸ ºÁÁÖ°Ú´Ù ^_^ .. !');
-  // ÀÌº¥Æ®¸¦ Á¦°ÅÇÕ´Ï´Ù.
-  process.removeListener('uncaughtException', onUncaughtException);
+    // ì¶œë ¥í•©ë‹ˆë‹¤.
+    console.log('ì˜ˆì™¸ê°€ ë°œìƒí–ˆêµ° ^_^ ì´ë²ˆì—ë§Œ ë´ì£¼ê² ë‹¤ ^_^ .. !');
+    // ì´ë²¤íŠ¸ë¥¼ ì œê±°í•©ë‹ˆë‹¤.
+    process.removeListener('uncaughtException', onUncaughtException);
 };
 
-// process °´Ã¼¿¡ uncaughtException ÀÌº¥Æ®¸¦ ¿¬°áÇÕ´Ï´Ù.
+// process ê°ì²´ì— uncaughtException ì´ë²¤íŠ¸ë¥¼ ì—°ê²°í•©ë‹ˆë‹¤.
 process.on('uncaughtException', onUncaughtException);
 
-// 2ÃÊ °£°İÀ¸·Î ¿¹¿Ü¸¦ ¹ß»ı½ÃÅµ´Ï´Ù.
+// 2ì´ˆ ê°„ê²©ìœ¼ë¡œ ì˜ˆì™¸ë¥¼ ë°œìƒì‹œí‚µë‹ˆë‹¤.
 var test = function () {
-  setTimeout(test, 2000);
-  error.error.error();
+    setTimeout(test, 2000);
+    error.error.error();
 };
 setTimeout(test, 2000);

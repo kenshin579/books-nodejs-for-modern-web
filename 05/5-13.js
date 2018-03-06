@@ -1,2 +1,2 @@
-// EventEmitter °´Ã¼¸¦ »ı¼ºÇÕ´Ï´Ù.
+// EventEmitter ê°ì²´ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 var custom = new process.EventEmitter();
