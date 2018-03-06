@@ -1,14 +1,15 @@
-// ¼­¹ö¸¦ »ı¼ºÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 var server = require('http').createServer();
 
-// ¼­¹ö¸¦ ½ÇÇàÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ì‹¤í–‰í•©ë‹ˆë‹¤.
 server.listen(52273, function () {
-  console.log('Server Running at http://127.0.0.1:52273');
+    console.log('Server Running at http://127.0.0.1:52273');
 });
 
-// 10ÃÊ ÈÄ ÇÔ¼ö¸¦ ½ÇÇàÇÕ´Ï´Ù.
+// 10ì´ˆ í›„ í•¨ìˆ˜ë¥¼ ì‹¤í–‰í•©ë‹ˆë‹¤.
 var test = function () {
-  // ¼­¹ö¸¦ Á¾·áÇÕ´Ï´Ù.
-  server.close();
+    // ì„œë²„ë¥¼ ì¢…ë£Œí•©ë‹ˆë‹¤.
+    server.close();
+    console.log("closing");
 };
 setTimeout(test, 10000);

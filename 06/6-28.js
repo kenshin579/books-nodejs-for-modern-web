@@ -1,31 +1,32 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var http = require('http');
 
-// ¸ğµâÀ» »ç¿ëÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì‚¬ìš©í•©ë‹ˆë‹¤.
 http.createServer(function (request, response) {
-  // ÄíÅ°°¡ ÀÖ´ÂÁö È®ÀÎ
-  if (request.headers.cookie) {
-    // ÄíÅ°¸¦ ÃßÃâÇÏ°í ºĞÇØÇÕ´Ï´Ù.
-    var cookie = request.headers.cookie.split(';').map(function (element) {
-      var element = element.split('=');
-      return {
-        key: element[0],
-        value: element[1]
-      };
-    });
+    // ì¿ í‚¤ê°€ ìˆëŠ”ì§€ í™•ì¸
+    if (request.headers.cookie) {
+        // ì¿ í‚¤ë¥¼ ì¶”ì¶œí•˜ê³  ë¶„í•´í•©ë‹ˆë‹¤.
+        //"breakfast=toast; dinner=chicken; name=RintIanTta; region=Seoul"
+        var cookie = request.headers.cookie.split(';').map(function (element) {
+            element = element.split('=');
+            return {
+                key: element[0],
+                value: element[1]
+            };
+        });
 
-    // ÀÀ´äÇÕ´Ï´Ù.
-    response.end('<h1>' + JSON.stringify(cookie) + '</h1>');
-  } else {
-    // ÄíÅ°¸¦ »ı¼ºÇÕ´Ï´Ù.
-    response.writeHead(200, {
-      'Content-Type': 'text/html',
-      'Set-Cookie': ['name = RintIanTta', 'region = Seoul']
-    });
+        // ì‘ë‹µí•©ë‹ˆë‹¤.
+        response.end('<h1>' + JSON.stringify(cookie) + '</h1>');
+    } else {
+        // ì¿ í‚¤ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
+        response.writeHead(200, {
+            'Content-Type': 'text/html',
+            'Set-Cookie': ['name = RintIanTta', 'region = Seoul']
+        });
 
-    // ÀÀ´äÇÕ´Ï´Ù.
-    response.end('<h1>ÄíÅ°¸¦ »ı¼ºÇß½À´Ï´Ù</h1>');
-  }
+        // ì‘ë‹µí•©ë‹ˆë‹¤.
+        response.end('<h1>ì¿ í‚¤ë¥¼ ìƒì„±í–ˆìŠµë‹ˆë‹¤</h1>');
+    }
 }).listen(52273, function () {
-  console.log('Server Running at http://127.0.0.1:52273');
+    console.log('Server Running at http://127.0.0.1:52273');
 });

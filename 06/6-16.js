@@ -1,10 +1,10 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var http = require('http');
 
-// À¥ ¼­¹ö¸¦ »ı¼º ¹× ½ÇÇàÇÕ´Ï´Ù.
+// ì›¹ ì„œë²„ë¥¼ ìƒì„± ë° ì‹¤í–‰í•©ë‹ˆë‹¤.
 http.createServer(function (request, response) {
-  response.writeHead(404);
-  response.end();
+    response.writeHead(404);
+    response.end();
 }).listen(52273, function () {
-  console.log('Server Running at http://127.0.0.1:52273');
+    console.log('Server Running at http://127.0.0.1:52273');
 });

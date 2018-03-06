@@ -1,19 +1,19 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var http = require('http');
 var fs = require('fs');
 var url = require('url');
 
-// ¼­¹ö¸¦ »ı¼º ¹× ½ÇÇàÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ìƒì„± ë° ì‹¤í–‰í•©ë‹ˆë‹¤.
 http.createServer(function (request, response) {
-  // º¯¼ö¸¦ ¼±¾ğÇÕ´Ï´Ù.
-  var pathname = url.parse(request.url).pathname;
+    // ë³€ìˆ˜ë¥¼ ì„ ì–¸í•©ë‹ˆë‹¤.
+    var pathname = url.parse(request.url).pathname;
 
-  // ÆäÀÌÁö¸¦ ±¸ºĞÇÕ´Ï´Ù.
-  if (pathname == '/') {
+    // í˜ì´ì§€ë¥¼ êµ¬ë¶„í•©ë‹ˆë‹¤.
+    if (pathname === '/') {
 
-  } else if (pathname == '/OtherPage') {
+    } else if (pathname === '/OtherPage') {
 
-  }
+    }
 }).listen(52273, function () {
-  console.log('Server Running at http://127.0.0.1:52273');
+    console.log('Server Running at http://127.0.0.1:52273');
 });

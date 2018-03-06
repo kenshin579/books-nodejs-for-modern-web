@@ -1,22 +1,22 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var http = require('http');
 
-// ¼­¹ö¸¦ »ı¼ºÇÏ°í ½ÇÇàÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ìƒì„±í•˜ê³  ì‹¤í–‰í•©ë‹ˆë‹¤.
 http.createServer(function (request, response) {
-  // º¯¼ö¸¦ ¼±¾ğÇÕ´Ï´Ù.
-  var date = new Date();
-  date.setDate(date.getDate() + 7);
+    // ë³€ìˆ˜ë¥¼ ì„ ì–¸í•©ë‹ˆë‹¤.
+    var date = new Date();
+    date.setDate(date.getDate() + 7);
 
-  // ÄíÅ°¸¦ ÀÔ·ÂÇÕ´Ï´Ù.
-  response.writeHead(200, {
-    'Content-Type': 'text/html ',
-    'Set-Cookie': [
-        'breakfast = toast;Expires = ' + date.toUTCString(),
-        'dinner = chicken'
-    ]
-  });
-  // ÄíÅ°¸¦ Ãâ·ÂÇÕ´Ï´Ù.
-  response.end('<h1>' + request.headers.cookie + '</h1>');
+    // ì¿ í‚¤ë¥¼ ì…ë ¥í•©ë‹ˆë‹¤.
+    response.writeHead(200, {
+        'Content-Type': 'text/html ',
+        'Set-Cookie': [
+            'breakfast = toast;Expires = ' + date.toUTCString(),
+            'dinner = chicken'
+        ]
+    });
+    // ì¿ í‚¤ë¥¼ ì¶œë ¥í•©ë‹ˆë‹¤.
+    response.end('<h1>' + request.headers.cookie + '</h1>');
 }).listen(52273, function () {
-  console.log('Server Running at http://127.0.0.1:52273');
+    console.log('Server Running at http://127.0.0.1:52273');
 });

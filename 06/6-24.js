@@ -1,9 +1,9 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var http = require('http');
 
-// ¸ğµâÀ» »ç¿ëÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì‚¬ìš©í•©ë‹ˆë‹¤.
 http.createServer(function (request, response) {
-  request.on('data', function (data) {
-    console.log('POST Data:', data);
-  });
+    request.on('data', function (data) {
+        console.log('POST Data:', data);
+    });
 }).listen(52273);

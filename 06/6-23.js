@@ -1,15 +1,15 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var http = require('http');
 var url = require('url');
 
-// ¸ğµâÀ» »ç¿ëÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì‚¬ìš©í•©ë‹ˆë‹¤.
 http.createServer(function (request, response) {
-  // ¿äÃ» ¸Å°³º¯¼ö¸¦ ÃßÃâÇÕ´Ï´Ù.
-  var query = url.parse(request.url, true).query;
+    // ìš”ì²­ ë§¤ê°œë³€ìˆ˜ë¥¼ ì¶”ì¶œí•©ë‹ˆë‹¤.
+    var query = url.parse(request.url, true).query;
 
-  // GET ¿äÃ» ¸Å°³º¯¼ö Ãâ·Â
-  response.writeHead(200, { 'Content-Type': 'text/html' });
-  response.end('<h1>' + JSON.stringify(query) + '</h1>');
+    // GET ìš”ì²­ ë§¤ê°œë³€ìˆ˜ ì¶œë ¥
+    response.writeHead(200, {'Content-Type': 'text/html'});
+    response.end('<h1>' + JSON.stringify(query) + '</h1>');
 }).listen(52273, function () {
-  console.log('Server Running at http://127.0.0.1:52273');
+    console.log('Server Running at http://127.0.0.1:52273');
 });

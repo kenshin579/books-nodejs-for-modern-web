@@ -1,18 +1,18 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var http = require('http');
 
-// ¸ğµâÀ» »ç¿ëÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì‚¬ìš©í•©ë‹ˆë‹¤.
 http.createServer(function (request, response) {
-  // GET COOKIE
-  var cookie = request.headers.cookie;
+    // GET COOKIE
+    var cookie = request.headers.cookie;
 
-  // SET COOKIE
-  response.writeHead(200, {
-    'Content-Type': 'text/html',
-    'Set-Cookie': ['name = RintIanTta', 'region = Seoul']
-  });
-  // ÀÀ´äÇÕ´Ï´Ù.
-  response.end('<h1>' + JSON.stringify(cookie) + '</h1>');
+    // SET COOKIE
+    response.writeHead(200, {
+        'Content-Type': 'text/html',
+        'Set-Cookie': ['name = RintIanTta', 'region = Seoul']
+    });
+    // ì‘ë‹µí•©ë‹ˆë‹¤.
+    response.end('<h1>' + JSON.stringify(cookie) + '</h1>');
 }).listen(52273, function () {
-  console.log('Server Running at http://127.0.0.1:52273');
+    console.log('Server Running at http://127.0.0.1:52273');
 });

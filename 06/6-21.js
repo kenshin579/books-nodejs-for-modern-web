@@ -1,28 +1,28 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var http = require('http');
 var fs = require('fs');
 var url = require('url');
 
-// ¼­¹ö¸¦ »ı¼º ¹× ½ÇÇàÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ìƒì„± ë° ì‹¤í–‰í•©ë‹ˆë‹¤.
 http.createServer(function (request, response) {
-  // º¯¼ö¸¦ ¼±¾ğÇÕ´Ï´Ù.
-  var pathname = url.parse(request.url).pathname;
-  // ÆäÀÌÁö¸¦ ±¸ºĞÇÕ´Ï´Ù.
-  if (pathname == '/') {
-    // Index.html ÆÄÀÏÀ» ÀĞ½À´Ï´Ù.
-    fs.readFile('6-17.html', function (error, data) {
-      // ÀÀ´äÇÕ´Ï´Ù.
-      response.writeHead(200, { 'Content-Type': 'text/html' });
-      response.end(data);
-    });
-  } else if (pathname == '/OtherPage') {
-    // OtherPage.html ÆÄÀÏÀ» ÀĞ½À´Ï´Ù.
-    fs.readFile('6-18.html', function (error, data) {
-      // ÀÀ´äÇÕ´Ï´Ù.
-      response.writeHead(200, { 'Content-Type': 'text/html' });
-      response.end(data);
-    });
-  }
+    // ë³€ìˆ˜ë¥¼ ì„ ì–¸í•©ë‹ˆë‹¤.
+    var pathname = url.parse(request.url).pathname;
+    // í˜ì´ì§€ë¥¼ êµ¬ë¶„í•©ë‹ˆë‹¤.
+    if (pathname === '/') {
+        // Index.html íŒŒì¼ì„ ì½ìŠµë‹ˆë‹¤.
+        fs.readFile('6-17-index.html', function (error, data) {
+            // ì‘ë‹µí•©ë‹ˆë‹¤.
+            response.writeHead(200, {'Content-Type': 'text/html'});
+            response.end(data);
+        });
+    } else if (pathname === '/OtherPage') {
+        // OtherPage.html íŒŒì¼ì„ ì½ìŠµë‹ˆë‹¤.
+        fs.readFile('6-18-OtherPage.html', function (error, data) {
+            // ì‘ë‹µí•©ë‹ˆë‹¤.
+            response.writeHead(200, {'Content-Type': 'text/html'});
+            response.end(data);
+        });
+    }
 }).listen(52273, function () {
-  console.log('Server Running at http://127.0.0.1:52273');
+    console.log('Server Running at http://127.0.0.1:52273');
 });

@@ -1,5 +1,5 @@
-// À¥ ¼­¹ö¸¦ »ı¼ºÇÏ°í ½ÇÇàÇÕ´Ï´Ù.
+// ì›¹ ì„œë²„ë¥¼ ìƒì„±í•˜ê³  ì‹¤í–‰í•©ë‹ˆë‹¤.
 require('http').createServer(function (request, response) {
-  response.writeHead(200, { 'Content-Type': 'text/html' });
-  response.end('<h1>Hello World .. !</h1>');
+    response.writeHead(200, {'Content-Type': 'text/html'});
+    response.end('<h1>Hello World .. !</h1>');
 }).listen(52273);

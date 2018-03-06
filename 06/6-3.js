@@ -1,21 +1,21 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var http = require('http');
 
-// server °´Ã¼¸¦ »ı¼ºÇÕ´Ï´Ù.
+// server ê°ì²´ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 var server = http.createServer();
 
-// server °´Ã¼¿¡ ÀÌº¥Æ®¸¦ ¿¬°áÇÕ´Ï´Ù.
+// server ê°ì²´ì— ì´ë²¤íŠ¸ë¥¼ ì—°ê²°í•©ë‹ˆë‹¤.
 server.on('request', function (code) {
-  console.log('Request On');
+    console.log('Request On');
 });
 
 server.on('connection', function (code) {
-  console.log('Connection On');
+    console.log('Connection On');
 });
 
 server.on('close', function (code) {
-  console.log('Close On');
+    console.log('Close On');
 });
 
-// listen() ¸Ş¼­µå¸¦ ½ÇÇàÇÕ´Ï´Ù.
+// listen() ë©”ì„œë“œë¥¼ ì‹¤í–‰í•©ë‹ˆë‹¤.
 server.listen(52273);

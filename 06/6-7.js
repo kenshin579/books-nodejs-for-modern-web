@@ -1,14 +1,14 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var fs = require('fs');
 var http = require('http');
 
-// ¼­¹ö¸¦ »ı¼ºÇÏ°í ½ÇÇàÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ìƒì„±í•˜ê³  ì‹¤í–‰í•©ë‹ˆë‹¤.
 http.createServer(function (request, response) {
-  // HTML ÆÄÀÏÀ» ÀĞ½À´Ï´Ù.
-  fs.readFile('6-8.html', function (error, data) {
-    response.writeHead(200, { 'Content-Type': 'text/html' });
-    response.end(data);
-  });
+    // HTML íŒŒì¼ì„ ì½ìŠµë‹ˆë‹¤.
+    fs.readFile('6-8.html', function (error, data) {
+        response.writeHead(200, {'Content-Type': 'text/html'});
+        response.end(data);
+    });
 }).listen(52273, function () {
-  console.log('Server Running at http://127.0.0.1:52273');
+    console.log('Server Running at http://127.0.0.1:52273');
 });
