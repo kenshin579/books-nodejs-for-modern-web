@@ -1,19 +1,24 @@
-// ������ �����մϴ�.
+// 모듈을 추출합니다.
 var fs = require('fs');
 
-// ������ �н��ϴ�.
+// 파일을 읽습니다.
 fs.readFile('textfile.txt', 'utf8', function (error, data) {
-  // ������ �߻��ϸ� ���ٷ� ����
-  if (error) { return console.log(error); }
+    // 오류가 발생하면 곧바로 리턴
+    if (error) {
+        return console.log(error);
+    }
 
-  // ���ϴ� ó��
-  console.log(data);
+    // 원하는 처리
+    console.log(data);
 });
-// ������ ���ϴ�.
-fs.writeFile('textfile.txt', 'Hello World .. !', 'utf8', function (error) {
-  // ������ �߻��ϸ� ���ٷ� ����
-  if (error) { return console.log(error); }
 
-  // ���ϴ� ó��
-  console.log('FILE WRITE COMPLETE');
+// 파일을 씁니다.
+fs.writeFile('textfile.txt', 'Hello World .. !', 'utf8', function (error) {
+    // 오류가 발생하면 곧바로 리턴
+    if (error) {
+        return console.log(error);
+    }
+
+    // 원하는 처리
+    console.log('FILE WRITE COMPLETE');
 });

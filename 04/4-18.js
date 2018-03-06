@@ -1,20 +1,20 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var fs = require('fs');
 
-// ÆÄÀÏÀ» ÀĞ½À´Ï´Ù.
+// íŒŒì¼ì„ ì½ìŠµë‹ˆë‹¤.
 fs.readFile('textfile.txt', 'utf8', function (error, data) {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log(data);
-  }
+    if (error) {
+        console.log(error);
+    } else {
+        console.log(data);
+    }
 });
 
-// ÆÄÀÏÀ» ¾¹´Ï´Ù.
+// íŒŒì¼ì„ ì”ë‹ˆë‹¤.
 fs.writeFile('textfile.txt', 'Hello World .. !', 'utf8', function (error) {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('FILE WRITE COMPLETE');
-  }
+    if (error) {
+        console.log(error);
+    } else {
+        console.log('FILE WRITE COMPLETE');
+    }
 });

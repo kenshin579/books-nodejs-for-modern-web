@@ -1,15 +1,15 @@
-# ������ �����մϴ�.
+# 모듈을 추출합니다.
 fs = require "fs"
 
-# ������ �н��ϴ�.
+# 파일을 읽습니다.
 fs.readFile "textfile.txt", "utf8", (error, data) ->
-    # ������ �߻��ϸ� ���ٷ� ����
-    return console.log error if error
-    # ���ϴ� ó��
-    console.log data
-# ������ ���ϴ�.
+# 오류가 발생하면 곧바로 리턴
+  return console.log error if error
+  # 원하는 처리
+  console.log data
+# 파일을 씁니다.
 fs.writeFile "textfile.txt", "Hello World .. !", "utf8", (error) ->
-    # ������ �߻��ϸ� ���ٷ� ����
-    return console.log error if error
-    # ���ϴ� ó��
-    console.log "FILE WRITE COMPLETE"
+# ������ �߻��ϸ� ���ٷ� ����오류가 발생하면 곧바로 리턴
+  return console.log error if error
+  #  원하는 처리
+  console.log "FILE WRITE COMPLETE"

@@ -1,18 +1,18 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var fs = require('fs');
 
-// ÆÄÀÏÀ» ÀĞ½À´Ï´Ù.
+// íŒŒì¼ì„ ì½ìŠµë‹ˆë‹¤.
 try {
-  var data = fs.readFileSync('textfile.txt', 'utf8');
-  console.log(data);
+    var data = fs.readFileSync('textfile.txt', 'utf8');
+    console.log(data);
 } catch (e) {
-  console.log(e);
+    console.log(e);
 }
 
-// ÆÄÀÏÀ» ¾¹´Ï´Ù.
+// íŒŒì¼ì„ ì”ë‹ˆë‹¤.
 try {
-  fs.writeFileSync('textfile.txt', 'Hello World .. !', 'utf8');
-  console.log('FILE WRITE COMPLETE');
+    fs.writeFileSync('textfile.txt', 'Hello World .. !', 'utf8');
+    console.log('FILE WRITE COMPLETE');
 } catch (e) {
-  console.log(e);
+    console.log(e);
 }
