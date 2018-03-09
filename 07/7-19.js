@@ -1,21 +1,21 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var http = require('http');
 var jade = require('jade');
 var fs = require('fs');
 
-// ¼­¹ö¸¦ »ı¼ºÇÏ°í ½ÇÇàÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ìƒì„±í•˜ê³  ì‹¤í–‰í•©ë‹ˆë‹¤.
 http.createServer(function (request, response) {
-  // JadePage.jade ÆÄÀÏÀ» ÀĞ½À´Ï´Ù.
-  fs.readFile('7-20.jade', 'utf8', function (error, data) {
-    // jade ¸ğµâÀ» »ç¿ëÇÕ´Ï´Ù.
-    var fn = jade.compile(data);
-    // Ãâ·ÂÇÕ´Ï´Ù.
-    response.writeHead(200, { 'Content-Type': 'text/html' });
-    response.end(fn({
-      name: 'RintIanTta',
-      description: 'Hello jade With Node.js .. !'
-    }));
-  });
+    // JadePage.jade íŒŒì¼ì„ ì½ìŠµë‹ˆë‹¤.
+    fs.readFile('7-20.jade', 'utf8', function (error, data) {
+        // jade ëª¨ë“ˆì„ ì‚¬ìš©í•©ë‹ˆë‹¤.
+        var fn = jade.compile(data);
+        // ì¶œë ¥í•©ë‹ˆë‹¤.
+        response.writeHead(200, {'Content-Type': 'text/html'});
+        response.end(fn({
+            name: 'RintIanTta',
+            description: 'Hello jade With Node.js .. !'
+        }));
+    });
 }).listen(52273, function () {
-  console.log('Server Running at http://127.0.0.1:52273');
+    console.log('Server Running at http://127.0.0.1:52273');
 });

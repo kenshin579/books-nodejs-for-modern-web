@@ -1,21 +1,21 @@
-// ¼­¹ö¸¦ »ı¼º ¹× ½ÇÇàÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ìƒì„± ë° ì‹¤í–‰í•©ë‹ˆë‹¤.
 require('http').createServer(function (request, response) {
-  if (request.url == '/') {
-    // ÀÀ´äÇÕ´Ï´Ù.
-    response.write('<!DOCTYPE html>');
-    response.write('<html>');
-    response.write('<head>');
-    response.write('    <title>Forever</title>');
-    response.write('</head>');
-    response.write('<body>');
-    response.write('    <h1>Forever</h1>');
-    response.write('</body>');
-    response.write('</html>');
-    response.end();
-  } else {
-    // ¿À·ù¸¦ ¹ß»ıÇÕ´Ï´Ù.
-    error.error.error();
-  }
+    if (request.url == '/') {
+        // ì‘ë‹µí•©ë‹ˆë‹¤.
+        response.write('<!DOCTYPE html>');
+        response.write('<html>');
+        response.write('<head>');
+        response.write('    <title>Forever</title>');
+        response.write('</head>');
+        response.write('<body>');
+        response.write('    <h1>Forever</h1>');
+        response.write('</body>');
+        response.write('</html>');
+        response.end();
+    } else {
+        // ì˜¤ë¥˜ë¥¼ ë°œìƒí•©ë‹ˆë‹¤.
+        error.error.error();
+    }
 }).listen(52273, function () {
-  console.log('Server running at http://127.0.0.1:52273');
+    console.log('Server running at http://127.0.0.1:52273');
 });

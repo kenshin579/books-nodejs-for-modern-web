@@ -1,15 +1,15 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var http = require('http');
 var fs = require('fs');
 var ejs = require('ejs');
 
-// ¼­¹ö¸¦ »ı¼ºÇÏ°í ½ÇÇàÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ìƒì„±í•˜ê³  ì‹¤í–‰í•©ë‹ˆë‹¤.
 http.createServer(function (request, response) {
-  // ejsPage.ejs ÆÄÀÏÀ» ÀĞ½À´Ï´Ù.
-  fs.readFile('7-6.ejs', 'utf8', function (error, data) {
-    response.writeHead(200, { 'Content-Type': 'text/html' });
-    response.end(ejs.render(data));
-  });
+    // ejsPage.ejs íŒŒì¼ì„ ì½ìŠµë‹ˆë‹¤.
+    fs.readFile('7-5.ejs', 'utf8', function (error, data) {
+        response.writeHead(200, {'Content-Type': 'text/html'});
+        response.end(ejs.render(data));
+    });
 }).listen(52273, function () {
-  console.log('Server Running at http://127.0.0.1:52273');
+    console.log('Server Running at http://127.0.0.1:52273');
 });
