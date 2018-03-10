@@ -1,7 +1,7 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var http = require('http');
 
-// º¯¼ö¸¦ »ı¼ºÇÕ´Ï´Ù.
+// ë³€ìˆ˜ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 var output = [];
 for (var i = 0; i < 100; i++) {
     output.push({
@@ -10,7 +10,7 @@ for (var i = 0; i < 100; i++) {
     });
 }
 
-// ¼­¹ö¸¦ »ı¼º ¹× ½ÇÇàÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ìƒì„± ë° ì‹¤í–‰í•©ë‹ˆë‹¤.
 http.createServer(function (request, response) {
     response.writeHead(200, { 'Content-Type': 'application/json' });
     response.end(JSON.stringify(output));
