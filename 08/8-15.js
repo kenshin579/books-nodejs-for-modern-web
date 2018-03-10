@@ -1,28 +1,28 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var express = require('express');
 
-// ¼­¹ö¸¦ »ı¼ºÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 var app = express();
 
-// ¶ó¿ìÅÍ¸¦ »ı¼ºÇÕ´Ï´Ù.
+// ë¼ìš°í„°ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 var routerA = express.Router();
 var routerB = express.Router();
 
-// ¶ó¿ìÅÍA¸¦ ¼³Á¤ÇÕ´Ï´Ù.
+// ë¼ìš°í„°Aë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
 routerA.get('/index', function (request, response) {
-  response.send('<h1>Index Page</h1>');
+    response.send('<h1>Index Page</h1>');
 });
 
-// ¶ó¿ìÅÍB¸¦ ¼³Á¤ÇÕ´Ï´Ù.
+// ë¼ìš°í„°Bë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
 routerB.get('/index', function (request, response) {
-  response.send('<h1>Index Page</h1>');
+    response.send('<h1>Index Page</h1>');
 });
 
-// ¶ó¿ìÅÍ¸¦ ¼³Á¤ÇÕ´Ï´Ù.
+// ë¼ìš°í„°ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
 app.use('/a', routerA);
 app.use('/b', routerB);
 
-// ¼­¹ö¸¦ ½ÇÇàÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ì‹¤í–‰í•©ë‹ˆë‹¤.
 app.listen(52273, function () {
-  console.log('Server running at http://127.0.0.1:52273');
+    console.log('Server running at http://127.0.0.1:52273');
 });

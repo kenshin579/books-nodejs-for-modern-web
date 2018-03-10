@@ -1,12 +1,12 @@
-// routerA.js ÆÄÀÏ
-// ¸ğµâ°ú º¯¼ö ¼±¾ğ
+// routerA.js íŒŒì¼
+// ëª¨ë“ˆê³¼ ë³€ìˆ˜ ì„ ì–¸
 var express = require('express');
 var router = express.Router();
 
-// ÆäÀÌÁö ¶ó¿ìÆ®
+// í˜ì´ì§€ ë¼ìš°íŠ¸
 router.get('/index', function (request, response) {
-  response.send('<h1>Index Page</h1>');
+    response.send('<h1>Index PageA</h1>');
 });
 
-// ¿ÜºÎ·Î »®´Ï´Ù.
+// ì™¸ë¶€ë¡œ ëºë‹ˆë‹¤.
 exports.router = router

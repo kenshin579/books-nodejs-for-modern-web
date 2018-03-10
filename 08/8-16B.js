@@ -1,15 +1,15 @@
-// index.js ÆÄÀÏ
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// index.js íŒŒì¼
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var express = require('express');
 
-// ¼­¹ö¸¦ »ı¼ºÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 var app = express();
-app.use('/a', require("./8-16").router);
-app.use('/b', require("./8-16").router);
-app.use('/c', require("./8-16").router);
+app.use('/a', require("./8-16A-routerA").router);
+app.use('/b', require("./8-16A-routerB").router);
+app.use('/c', require("./8-16A-routerC").router);
 
-// ¼­¹ö¸¦ ½ÇÇàÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ì‹¤í–‰í•©ë‹ˆë‹¤.
 app.listen(52273, function () {
-  console.log('Server running at http://127.0.0.1:52273');
+    console.log('Server running at http://127.0.0.1:52273');
 });
 

@@ -1,30 +1,30 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var express = require('express');
 var cookieParser = require('cookie-parser');
 
-// ¼­¹ö¸¦ »ı¼ºÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 var app = express();
 
-// ¹Ìµé¿ş¾î¸¦ ¼³Á¤ÇÕ´Ï´Ù.
+// ë¯¸ë“¤ì›¨ì–´ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
 app.use(cookieParser());
 
-// ¶ó¿ìÅÍ¸¦ ¼³Á¤ÇÕ´Ï´Ù.
+// ë¼ìš°í„°ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
 app.get('/getCookie', function (request, response) {
-  // ÀÀ´äÇÕ´Ï´Ù.
-  response.send(request.cookies);
+    // ì‘ë‹µí•©ë‹ˆë‹¤.
+    response.send(request.cookies);
 });
 app.get('/setCookie', function (request, response) {
-  // ÄíÅ°¸¦ »ı¼ºÇÕ´Ï´Ù.
-  response.cookie('string', 'cookie');
-  response.cookie('json', {
-    name: 'cookie',
-    property: 'delicious'
-  });
-  // ÀÀ´äÇÕ´Ï´Ù.
-  response.redirect('/getCookie');
+    // ì¿ í‚¤ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
+    response.cookie('string', 'cookie');
+    response.cookie('json', {
+        name: 'cookie',
+        property: 'delicious'
+    });
+    // ì‘ë‹µí•©ë‹ˆë‹¤.
+    response.redirect('/getCookie');
 });
 
-// ¼­¹ö¸¦ ½ÇÇàÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ì‹¤í–‰í•©ë‹ˆë‹¤.
 app.listen(52273, function () {
-  console.log('Server running at http://127.0.0.1:52273');
+    console.log('Server running at http://127.0.0.1:52273');
 });

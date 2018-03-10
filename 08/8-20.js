@@ -1,17 +1,17 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var express = require('express');
 var morgan = require('morgan');
 
-// ¼­¹ö¸¦ »ı¼ºÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 var app = express();
 
-// ¹Ìµé¿ş¾î¸¦ ¼³Á¤ÇÕ´Ï´Ù.
+// ë¯¸ë“¤ì›¨ì–´ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
 app.use(morgan(':method + :date'));
 app.use(function (request, response) {
-  response.send('<h1>express Basic</h1>');
+    response.send('<h1>express Basic</h1>');
 });
 
-// ¼­¹ö¸¦ ½ÇÇàÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ì‹¤í–‰í•©ë‹ˆë‹¤.
 app.listen(52273, function () {
-  console.log('Server running at http://127.0.0.1:52273');
+    console.log('Server running at http://127.0.0.1:52273');
 });

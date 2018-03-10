@@ -1,90 +1,92 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var fs = require('fs');
 var express = require('express');
 var bodyParser = require('body-parser');
 
-// ´õ¹Ì µ¥ÀÌÅÍº£ÀÌ½º¸¦ ±¸ÇöÇÕ´Ï´Ù.
+// ë”ë¯¸ ë°ì´í„°ë² ì´ìŠ¤ë¥¼ êµ¬í˜„í•©ë‹ˆë‹¤.
 var DummyDB = (function () {
-  // º¯¼ö¸¦ ¼±¾ğÇÕ´Ï´Ù.
-  var DummyDB = {};
-  var storage = [];
-  var count = 1;
+    // ë³€ìˆ˜ë¥¼ ì„ ì–¸í•©ë‹ˆë‹¤.
+    var DummyDB = {};
+    var storage = [];
+    var count = 1;
 
-  // ¸Ş¼­µå¸¦ ±¸ÇöÇÕ´Ï´Ù.
-  DummyDB.get = function (id) {
-    if (id) {
-      // º¯¼ö¸¦ °¡°øÇÕ´Ï´Ù.
-      id = (typeof id == 'string') ? Number(id) : id;
-      // µ¥ÀÌÅÍ¸¦ ¼±ÅÃÇÕ´Ï´Ù.
-      for (var i in storage) if (storage[i].id == id) {
-        return storage[i];
-      }
-    } else {
-      return storage;
-    }
-  };
+    // ë©”ì„œë“œë¥¼ êµ¬í˜„í•©ë‹ˆë‹¤.
+    DummyDB.get = function (id) {
+        if (id) {
+            // ë³€ìˆ˜ë¥¼ ê°€ê³µí•©ë‹ˆë‹¤.
+            id = (typeof id == 'string') ? Number(id) : id;
+            // ë°ì´í„°ë¥¼ ì„ íƒí•©ë‹ˆë‹¤.
+            for (var i in storage) if (storage[i].id == id) {
+                return storage[i];
+            }
+        } else {
+            return storage;
+        }
+    };
 
-  DummyDB.insert = function (data) {
-    data.id = count++;
-    storage.push(data);
-    return data;
-  };
+    DummyDB.insert = function (data) {
+        data.id = count++;
+        storage.push(data);
+        return data;
+    };
 
-  DummyDB.remove = function (id) {
-    // º¯¼ö¸¦ °¡°øÇÕ´Ï´Ù.
-    id = (typeof id == 'string') ? Number(id) : id;
-    // Á¦°ÅÇÕ´Ï´Ù.
-    for (var i in storage) if (storage[i].id == id) {
-      // µ¥ÀÌÅÍ¸¦ Á¦°ÅÇÕ´Ï´Ù.
-      storage.splice(i, 1);
-      // ¸®ÅÏÇÕ´Ï´Ù: µ¥ÀÌÅÍ »èÁ¦ ¼º°ø
-      return true;
-    }
-    // ¸®ÅÏÇÕ´Ï´Ù: µ¥ÀÌÅÍ »èÁ¦ ½ÇÆĞ
-    return false;
-  };
+    DummyDB.remove = function (id) {
+        // ë³€ìˆ˜ë¥¼ ê°€ê³µí•©ë‹ˆë‹¤.
+        id = (typeof id == 'string') ? Number(id) : id;
+        // ì œê±°í•©ë‹ˆë‹¤.
+        for (var i in storage) if (storage[i].id == id) {
+            // ë°ì´í„°ë¥¼ ì œê±°í•©ë‹ˆë‹¤.
+            storage.splice(i, 1);
+            // ë¦¬í„´í•©ë‹ˆë‹¤: ë°ì´í„° ì‚­ì œ ì„±ê³µ
+            return true;
+        }
+        // ë¦¬í„´í•©ë‹ˆë‹¤: ë°ì´í„° ì‚­ì œ ì‹¤íŒ¨
+        return false;
+    };
 
-  // ¸®ÅÏÇÕ´Ï´Ù.
-  return DummyDB;
+    // ë¦¬í„´í•©ë‹ˆë‹¤.
+    return DummyDB;
 })();
 
-// ¼­¹ö¸¦ »ı¼ºÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 var app = express();
 
-// ¹Ìµé¿ş¾î¸¦ ¼³Á¤ÇÕ´Ï´Ù.
+// ë¯¸ë“¤ì›¨ì–´ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
 app.use(bodyParser.urlencoded({
-  extended: false
+    extended: false
 }));
 
-// ¶ó¿ìÅÍ¸¦ ¼³Á¤ÇÕ´Ï´Ù.
+// ë¼ìš°í„°ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
 app.get('/user', function (request, response) {
-  response.send(DummyDB.get());
+    response.send(DummyDB.get());
 });
 
 app.get('/user/:id', function (request, response) {
-  response.send(DummyDB.get(request.params.id));
+    response.send(DummyDB.get(request.params.id));
 });
 
 app.post('/user', function (request, response) {
-  // º¯¼ö¸¦ ¼±¾ğÇÕ´Ï´Ù.
-  var name = request.body.name;
-  var region = request.body.region;
+    // ë³€ìˆ˜ë¥¼ ì„ ì–¸í•©ë‹ˆë‹¤.
+    var name = request.body.name;
+    var region = request.body.region;
 
-  // À¯È¿¼ºÀ» °Ë»çÇÕ´Ï´Ù.
-  if (name && region) {
-    response.send(DummyDB.insert({
-      name: name,
-      region: region
-    }));
-  } else {
-    throw new Error('error');
-  }
+    // ìœ íš¨ì„±ì„ ê²€ì‚¬í•©ë‹ˆë‹¤.
+    if (name && region) {
+        response.send(DummyDB.insert({
+            name: name,
+            region: region
+        }));
+    } else {
+        throw new Error('error');
+    }
 });
 
-app.put('/user/:id', function (request, response) { });
-app.delete('/user/:id', function (request, response) { });
+app.put('/user/:id', function (request, response) {
+});
+app.delete('/user/:id', function (request, response) {
+});
 
-// ¼­¹ö¸¦ ½ÇÇàÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ì‹¤í–‰í•©ë‹ˆë‹¤.
 app.listen(52273, function () {
-  console.log('Server running at http://127.0.0.1:52273');
+    console.log('Server running at http://127.0.0.1:52273');
 });

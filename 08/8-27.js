@@ -1,23 +1,23 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var fs = require('fs');
 var express = require('express');
 var multipart = require('connect-multiparty');
 
-// ¼­¹ö¸¦ »ı¼ºÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 var app = express();
 
-// ¹Ìµé¿ş¾î¸¦ ¼³Á¤ÇÕ´Ï´Ù.
+// ë¯¸ë“¤ì›¨ì–´ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
 app.use(multipart({ uploadDir: __dirname + '/multipart' }));
 
-// ¶ó¿ìÅÍ¸¦ ¼³Á¤ÇÕ´Ï´Ù.
+// ë¼ìš°í„°ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
 app.get('/', function (request, response) {
-  fs.readFile('8-26.html', function (error, data) {
-    response.send(data.toString());
-  });
+    fs.readFile('8-26-upload.html', function (error, data) {
+        response.send(data.toString());
+    });
 });
 app.post('/', function (request, response) { });
 
-// ¼­¹ö¸¦ ½ÇÇàÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ì‹¤í–‰í•©ë‹ˆë‹¤.
 app.listen(52273, function () {
-  console.log('Server running at http://127.0.0.1:52273');
+    console.log('Server running at http://127.0.0.1:52273');
 });

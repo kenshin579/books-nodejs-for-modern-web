@@ -1,30 +1,30 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var express = require('express');
 
-// ¼­¹ö¸¦ »ı¼ºÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 var app = express();
 
-// ¹Ìµé¿ş¾î ¼³Á¤(1)
+// ë¯¸ë“¤ì›¨ì–´ ì„¤ì •(1)
 app.use(function (request, response, next) {
-  console.log("Ã¹ ¹øÂ° ¹Ìµé¿ş¾î");
-  next();
+    console.log("ì²« ë²ˆì§¸ ë¯¸ë“¤ì›¨ì–´");
+    next();
 });
 
-// ¹Ìµé¿ş¾î ¼³Á¤(2)
+// ë¯¸ë“¤ì›¨ì–´ ì„¤ì •(2)
 app.use(function (request, response, next) {
-  console.log("µÎ ¹øÂ° ¹Ìµé¿ş¾î");
-  next();
+    console.log("ë‘ ë²ˆì§¸ ë¯¸ë“¤ì›¨ì–´");
+    next();
 });
 
-// ¹Ìµé¿ş¾î ¼³Á¤(3)
+// ë¯¸ë“¤ì›¨ì–´ ì„¤ì •(3)
 app.use(function (request, response, next) {
-  console.log("¼¼ ¹øÂ° ¹Ìµé¿ş¾î");
-  // ÀÀ´äÇÕ´Ï´Ù.
-  response.writeHead(200, { 'Content-Type': 'text/html' });
-  response.end('<h1>express Basic</h1>');
+    console.log("ì„¸ ë²ˆì§¸ ë¯¸ë“¤ì›¨ì–´");
+    // ì‘ë‹µí•©ë‹ˆë‹¤.
+    response.writeHead(200, {'Content-Type': 'text/html'});
+    response.end('<h1>express Basic</h1>');
 });
 
-// ¼­¹ö¸¦ ½ÇÇàÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ì‹¤í–‰í•©ë‹ˆë‹¤.
 app.listen(52273, function () {
-  console.log('Server running at http://127.0.0.1:52273');
+    console.log('Server running at http://127.0.0.1:52273');
 });

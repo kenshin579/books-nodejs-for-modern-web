@@ -1,20 +1,20 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var express = require('express');
 
-// ¼­¹ö¸¦ »ı¼ºÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 var app = express();
 
-// ¹Ìµé¿ş¾î¸¦ ¼³Á¤ÇÕ´Ï´Ù.
+// ë¯¸ë“¤ì›¨ì–´ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
 app.use(function (request, response, next) {
-  // º¯¼ö¸¦ ¼±¾ğÇÕ´Ï´Ù.
-  var name = request.query.name;
-  var region = request.query.region;
+    // ë³€ìˆ˜ë¥¼ ì„ ì–¸í•©ë‹ˆë‹¤.
+    var name = request.query.name;
+    var region = request.query.region;
 
-  // ÀÀ´äÇÕ´Ï´Ù.
-  response.send('<h1>' + name + '-' + region + '</h1>');
+    // ì‘ë‹µí•©ë‹ˆë‹¤.
+    response.send('<h1>' + name + '-' + region + '</h1>');
 });
 
-// ¼­¹ö¸¦ ½ÇÇàÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ì‹¤í–‰í•©ë‹ˆë‹¤.
 app.listen(52273, function () {
-  console.log('Server running at http://127.0.0.1:52273');
+    console.log('Server running at http://127.0.0.1:52273');
 });

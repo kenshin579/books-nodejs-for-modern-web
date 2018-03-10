@@ -1,49 +1,49 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var fs = require('fs');
 var express = require('express');
 var multipart = require('connect-multiparty');
 
-// ¼­¹ö¸¦ »ı¼ºÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 var app = express();
 
-// ¹Ìµé¿ş¾î¸¦ ¼³Á¤ÇÕ´Ï´Ù.
-var multipartMiddleware = multipart({ uploadDir: __dirname + '/multipart' });
+// ë¯¸ë“¤ì›¨ì–´ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
+var multipartMiddleware = multipart({uploadDir: __dirname + '/multipart'});
 
-// ¶ó¿ìÅÍ¸¦ ¼³Á¤ÇÕ´Ï´Ù.
+// ë¼ìš°í„°ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
 app.get('/', function (request, response) {
-  fs.readFile('8-26.html', function (error, data) {
-    response.send(data.toString());
-  });
+    fs.readFile('8-26.html', function (error, data) {
+        response.send(data.toString());
+    });
 });
 app.post('/', multipartMiddleware, function (request, response) {
-  // º¯¼ö¸¦ ¼±¾ğÇÕ´Ï´Ù.
-  var comment = request.body.comment;
-  var imageFile = request.files.image;
-  if (imageFile) {
-    // º¯¼ö¸¦ ¼±¾ğÇÕ´Ï´Ù.
-    var name = imageFile.name;
-    var path = imageFile.path;
-    var type = imageFile.type;
-    // ÀÌ¹ÌÁö ÆÄÀÏ È®ÀÎ
-    if (type.indexOf('image') != -1) {
-      // ÀÌ¹ÌÁö ÆÄÀÏÀÇ °æ¿ì: ÆÄÀÏ ÀÌ¸§À» º¯°æÇÕ´Ï´Ù.
-      var outputPath = __dirname + '/multipart/' + Date.now() + '_' + name;
-      fs.rename(path, outputPath, function (error) {
-        response.redirect('/');
-      });
+    // ë³€ìˆ˜ë¥¼ ì„ ì–¸í•©ë‹ˆë‹¤.
+    var comment = request.body.comment;
+    var imageFile = request.files.image;
+    if (imageFile) {
+        // ë³€ìˆ˜ë¥¼ ì„ ì–¸í•©ë‹ˆë‹¤.
+        var name = imageFile.name;
+        var path = imageFile.path;
+        var type = imageFile.type;
+        // ì´ë¯¸ì§€ íŒŒì¼ í™•ì¸
+        if (type.indexOf('image') !== -1) {
+            // ì´ë¯¸ì§€ íŒŒì¼ì˜ ê²½ìš°: íŒŒì¼ ì´ë¦„ì„ ë³€ê²½í•©ë‹ˆë‹¤.
+            var outputPath = __dirname + '/multipart/' + Date.now() + '_' + name;
+            fs.rename(path, outputPath, function (error) {
+                response.redirect('/');
+            });
+        } else {
+            // ì´ë¯¸ì§€ íŒŒì¼ì´ ì•„ë‹Œ ê²½ìš°: íŒŒì¼ì„ ì œê±°í•©ë‹ˆë‹¤.
+            fs.unlink(path, function (error) {
+                response.sendStatus(400);
+            });
+        }
     } else {
-      // ÀÌ¹ÌÁö ÆÄÀÏÀÌ ¾Æ´Ñ °æ¿ì: ÆÄÀÏÀ» Á¦°ÅÇÕ´Ï´Ù.
-      fs.unlink(path, function (error) {
-        response.sendStatus(400);
-      });
+        // íŒŒì¼ì´ ì—†ì„ ê²½ìš°
+        response.sendStatus(404);
     }
-  } else {
-    // ÆÄÀÏÀÌ ¾øÀ» °æ¿ì
-    response.sendStatus(404);
-  }
 });
 
-// ¼­¹ö¸¦ ½ÇÇàÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ì‹¤í–‰í•©ë‹ˆë‹¤.
 app.listen(52273, function () {
-  console.log('Server running at http://127.0.0.1:52273');
+    console.log('Server running at http://127.0.0.1:52273');
 });

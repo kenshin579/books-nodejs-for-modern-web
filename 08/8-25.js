@@ -1,50 +1,51 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var fs = require('fs');
 var express = require('express');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-// ¼­¹ö¸¦ »ı¼ºÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 var app = express();
-// ¹Ìµé¿ş¾î¸¦ ¼³Á¤ÇÕ´Ï´Ù.
+// ë¯¸ë“¤ì›¨ì–´ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
 app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 
-// ¶ó¿ìÅÍ¸¦ ¼³Á¤ÇÕ´Ï´Ù.
+// ë¼ìš°í„°ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
 app.get('/', function (request, response) {
-  if (request.cookies.auth) {
-    response.send('<h1>Login Success</h1>');
-  } else {
-    response.redirect('/login');
-  }
+    if (request.cookies.auth) {
+        response.send('<h1>Login Success</h1>');
+    } else {
+        response.redirect('/login');
+    }
 });
 
 app.get('/login', function (request, response) {
-  fs.readFile('8-23.html', function (error, data) {
-  });
+    fs.readFile('8-23-login.html', function (error, data) {
+        response.send(data.toString());
+    });
 });
 
 app.post('/login', function (request, response) {
-  // ÄíÅ°¸¦ »ı¼ºÇÕ´Ï´Ù.
-  var login = request.body.login;
-  var password = request.body.password;
+    // ì¿ í‚¤ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
+    var login = request.body.login;
+    var password = request.body.password;
 
-  // Ãâ·ÂÇÕ´Ï´Ù.
-  console.log(login, password);
-  console.log(request.body);
+    // ì¶œë ¥í•©ë‹ˆë‹¤.
+    console.log(login, password);
+    console.log(request.body);
 
-  // ·Î±×ÀÎÀ» È®ÀÎÇÕ´Ï´Ù.
-  if (login == 'rint' && password == '1234') {
-    // ·Î±×ÀÎ ¼º°ø
-    response.cookie('auth', true);
-    response.redirect('/');
-  } else {
-    // ·Î±×ÀÎ ½ÇÆĞ
-    response.redirect('/login');
-  }
+    // ë¡œê·¸ì¸ì„ í™•ì¸í•©ë‹ˆë‹¤.
+    if (login == 'rint' && password == '1234') {
+        // ë¡œê·¸ì¸ ì„±ê³µ
+        response.cookie('auth', true);
+        response.redirect('/');
+    } else {
+        // ë¡œê·¸ì¸ ì‹¤íŒ¨
+        response.redirect('/login');
+    }
 });
 
-// ¼­¹ö¸¦ ½ÇÇàÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ì‹¤í–‰í•©ë‹ˆë‹¤.
 app.listen(52273, function () {
-  console.log('Server running at http://127.0.0.1:52273');
+    console.log('Server running at http://127.0.0.1:52273');
 });

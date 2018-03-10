@@ -1,25 +1,25 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var express = require('express');
 
-// ¼­¹ö¸¦ »ı¼ºÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 var app = express();
 
-// ¹Ìµé¿ş¾î¸¦ ¼³Á¤ÇÕ´Ï´Ù.
+// ë¯¸ë“¤ì›¨ì–´ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
 app.use(function (request, response) {
-  // User-Agent ¼Ó¼ºÀ» ÃßÃâÇÕ´Ï´Ù.
-  var agent = request.header('User-Agent');
+    // User-Agent ì†ì„±ì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
+    var agent = request.header('User-Agent');
 
-  // ºê¶ó¿ìÀú¸¦ ±¸ºĞÇÕ´Ï´Ù.
-  if (agent.toLowerCase().match(/chrome/)) {
-    // ÆäÀÌÁö¸¦ Ãâ·ÂÇÕ´Ï´Ù.
-    response.send('<h1>Hello Chrome .. !</h1>');
-  } else {
-    // ÆäÀÌÁö¸¦ Ãâ·ÂÇÕ´Ï´Ù.
-    response.send('<h1>Hello express .. !</h1>');
-  }
+    // ë¸Œë¼ìš°ì €ë¥¼ êµ¬ë¶„í•©ë‹ˆë‹¤.
+    if (agent.toLowerCase().match(/chrome/)) {
+        // í˜ì´ì§€ë¥¼ ì¶œë ¥í•©ë‹ˆë‹¤.
+        response.send('<h1>Hello Chrome .. !</h1>');
+    } else {
+        // í˜ì´ì§€ë¥¼ ì¶œë ¥í•©ë‹ˆë‹¤.
+        response.send('<h1>Hello express .. !</h1>');
+    }
 });
 
-// ¼­¹ö¸¦ ½ÇÇàÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ì‹¤í–‰í•©ë‹ˆë‹¤.
 app.listen(52273, function () {
-  console.log('Server running at http://127.0.0.1:52273');
+    console.log('Server running at http://127.0.0.1:52273');
 });

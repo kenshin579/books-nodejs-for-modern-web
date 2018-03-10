@@ -1,22 +1,22 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var express = require('express');
 
-// ¼­¹ö¸¦ »ı¼ºÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 var app = express();
 
-// ¹Ìµé¿ş¾î¸¦ ¼³Á¤ÇÕ´Ï´Ù.
+// ë¯¸ë“¤ì›¨ì–´ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
 app.use(function (request, response) {
-  // User-Agent ¼Ó¼ºÀ» ÃßÃâÇÕ´Ï´Ù.
-  var agent = request.header('User-Agent');
-  console.log(request.headers);
-  console.log(agent);
+    // User-Agent ì†ì„±ì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
+    var agent = request.header('User-Agent');
+    console.log(request.headers);
+    console.log(agent);
 
-  // ÀÀ´äÇÕ´Ï´Ù.
-  // »óÅÂ ÄÚµå¸¸ º¸³¾ ¶§´Â sendStatus() ¸Ş¼­µå¸¦ »ç¿ëÇÕ´Ï´Ù.
-  response.sendStatus(200);
+    // ì‘ë‹µí•©ë‹ˆë‹¤.
+    // ìƒíƒœ ì½”ë“œë§Œ ë³´ë‚¼ ë•ŒëŠ” sendStatus() ë©”ì„œë“œë¥¼ ì‚¬ìš©í•©ë‹ˆë‹¤.
+    response.sendStatus(200);
 });
 
-// ¼­¹ö¸¦ ½ÇÇàÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ì‹¤í–‰í•©ë‹ˆë‹¤.
 app.listen(52273, function () {
-  console.log('Server running at http://127.0.0.1:52273');
+    console.log('Server running at http://127.0.0.1:52273');
 });

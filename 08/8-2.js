@@ -1,16 +1,16 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var express = require('express');
 
-// ¼­¹ö¸¦ »ı¼ºÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 var app = express();
 
-// request ÀÌº¥Æ® ¸®½º³Ê¸¦ ¼³Á¤ÇÕ´Ï´Ù.
+// request ì´ë²¤íŠ¸ ë¦¬ìŠ¤ë„ˆë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
 app.use(function (request, response) {
-  response.writeHead(200, { 'Content-Type': 'text/html' });
-  response.end('<h1>Hello express</h1>');
+    response.writeHead(200, {'Content-Type': 'text/html'});
+    response.end('<h1>Hello express</h1>');
 });
 
-// ¼­¹ö¸¦ ½ÇÇàÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ì‹¤í–‰í•©ë‹ˆë‹¤.
 app.listen(52273, function () {
-  console.log("Server Running at http://127.0.0.1:52273");
+    console.log("Server Running at http://127.0.0.1:52273");
 });

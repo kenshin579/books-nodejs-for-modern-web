@@ -1,25 +1,25 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var express = require('express');
 
-// ¼­¹ö¸¦ »ı¼ºÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 var app = express();
 
-// request ÀÌº¥Æ® ¸®½º³Ê¸¦ ¼³Á¤ÇÕ´Ï´Ù.
+// request ì´ë²¤íŠ¸ ë¦¬ìŠ¤ë„ˆë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
 app.use(function (request, response) {
-  // µ¥ÀÌÅÍ¸¦ »ı¼ºÇÕ´Ï´Ù.
-  var output = [];
-  for (var i = 0; i < 3; i++) {
-    output.push({
-      count: i,
-      name: 'name - ' + i
-    });
-  }
+    // ë°ì´í„°ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
+    var output = [];
+    for (var i = 0; i < 3; i++) {
+        output.push({
+            count: i,
+            name: 'name - ' + i
+        });
+    }
 
-  // ÀÀ´äÇÕ´Ï´Ù.
-  response.send(output);
+    // ì‘ë‹µí•©ë‹ˆë‹¤.
+    response.send(output);
 });
 
-// ¼­¹ö¸¦ ½ÇÇàÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ì‹¤í–‰í•©ë‹ˆë‹¤.
 app.listen(52273, function () {
-  console.log('Server running at http://127.0.0.1:52273');
+    console.log('Server running at http://127.0.0.1:52273');
 });
