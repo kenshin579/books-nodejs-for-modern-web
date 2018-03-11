@@ -1,11 +1,11 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var mysql = require('mysql');
 
-// µ¥ÀÌÅÍº£ÀÌ½º¿Í ¿¬°áÇÕ´Ï´Ù.
+// ë°ì´í„°ë² ì´ìŠ¤ì™€ ì—°ê²°í•©ë‹ˆë‹¤.
 var client = mysql.createConnection({
-  user: 'root',
-  password: 'ºñ¹Ğ¹øÈ£'
+    user: 'root',
+    password: 'thinkfree'
 });
 
-// µ¥ÀÌÅÍº£ÀÌ½º Äõ¸®¸¦ »ç¿ëÇÕ´Ï´Ù.
+// ë°ì´í„°ë² ì´ìŠ¤ ì¿¼ë¦¬ë¥¼ ì‚¬ìš©í•©ë‹ˆë‹¤.
 client.query('USE Company');

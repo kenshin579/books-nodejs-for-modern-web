@@ -1,91 +1,92 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var fs = require('fs');
 var ejs = require('ejs');
 var mysql = require('mysql');
 var express = require('express');
 var bodyParser = require('body-parser');
 
-// µ¥ÀÌÅÍº£ÀÌ½º¿Í ¿¬°áÇÕ´Ï´Ù.
+// ë°ì´í„°ë² ì´ìŠ¤ì™€ ì—°ê²°í•©ë‹ˆë‹¤.
 var client = mysql.createConnection({
-  user: 'root',
-  password: 'ºñ¹Ğ¹øÈ£',
-  database: 'Company'
+    user: 'root',
+    password: 'thinkfree',
+    database: 'Company'
 });
 
-// ¼­¹ö¸¦ »ı¼ºÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 var app = express();
 app.use(bodyParser.urlencoded({
-  extended: false
+    extended: false
 }));
 
-// ¼­¹ö¸¦ ½ÇÇàÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ì‹¤í–‰í•©ë‹ˆë‹¤.
 app.listen(52273, function () {
-  console.log('server running at http://127.0.0.1:52273');
+    console.log('server running at http://127.0.0.1:52273');
 });
 
-// ¶ó¿ìÆ®¸¦ ¼öÇàÇÕ´Ï´Ù.
+// ë¼ìš°íŠ¸ë¥¼ ìˆ˜í–‰í•©ë‹ˆë‹¤.
 app.get('/', function (request, response) {
-  // ÆÄÀÏÀ» ÀĞ½À´Ï´Ù.
-  fs.readFile('9-list.html', 'utf8', function (error, data) {
-    // µ¥ÀÌÅÍº£ÀÌ½º Äõ¸®¸¦ ½ÇÇàÇÕ´Ï´Ù.
-    client.query('SELECT * FROM products', function (error, results) {
-      // ÀÀ´äÇÕ´Ï´Ù.
-      response.send(ejs.render(data, {
-        data: results
-      }));
+    // íŒŒì¼ì„ ì½ìŠµë‹ˆë‹¤.
+    fs.readFile('9-list.html', 'utf8', function (error, data) {
+        // ë°ì´í„°ë² ì´ìŠ¤ ì¿¼ë¦¬ë¥¼ ì‹¤í–‰í•©ë‹ˆë‹¤.
+        client.query('SELECT * FROM products', function (error, results) {
+            // ì‘ë‹µí•©ë‹ˆë‹¤.
+            // console.log("results:" + JSON.stringify(results));
+            response.send(ejs.render(data, {
+                data: results
+            }));
+        });
     });
-  });
 });
 
 app.get('/delete/:id', function (request, response) {
-  // µ¥ÀÌÅÍº£ÀÌ½º Äõ¸®¸¦ ½ÇÇàÇÕ´Ï´Ù.
-  client.query('DELETE FROM products WHERE id=?', [request.params.id], function () {
-    // ÀÀ´äÇÕ´Ï´Ù.
-    response.redirect('/');
-  });
+    // ë°ì´í„°ë² ì´ìŠ¤ ì¿¼ë¦¬ë¥¼ ì‹¤í–‰í•©ë‹ˆë‹¤.
+    client.query('DELETE FROM products WHERE id=?', [request.params.id], function () {
+        // ì‘ë‹µí•©ë‹ˆë‹¤.
+        response.redirect('/');
+    });
 });
 
 app.get('/insert', function (request, response) {
-  // ÆÄÀÏÀ» ÀĞ½À´Ï´Ù.
-  fs.readFile('9-insert.html', 'utf8', function (error, data) {
-    // ÀÀ´äÇÕ´Ï´Ù.
-    response.send(data);
-  });
+    // íŒŒì¼ì„ ì½ìŠµë‹ˆë‹¤.
+    fs.readFile('9-insert.html', 'utf8', function (error, data) {
+        // ì‘ë‹µí•©ë‹ˆë‹¤.
+        response.send(data);
+    });
 });
 
 app.post('/insert', function (request, response) {
-  // º¯¼ö¸¦ ¼±¾ğÇÕ´Ï´Ù.
-  var body = request.body;
-  // µ¥ÀÌÅÍº£ÀÌ½º Äõ¸®¸¦ ½ÇÇàÇÕ´Ï´Ù.
-  client.query('INSERT INTO products (name, modelnumber, series) VALUES (?, ?, ?)', [
-      body.name, body.modelnumber, body.series
-  ], function () {
-    // ÀÀ´äÇÕ´Ï´Ù.
-    response.redirect('/');
-  });
+    // ë³€ìˆ˜ë¥¼ ì„ ì–¸í•©ë‹ˆë‹¤.
+    var body = request.body;
+    // ë°ì´í„°ë² ì´ìŠ¤ ì¿¼ë¦¬ë¥¼ ì‹¤í–‰í•©ë‹ˆë‹¤.
+    client.query('INSERT INTO products (name, modelnumber, series) VALUES (?, ?, ?)', [
+        body.name, body.modelnumber, body.series
+    ], function () {
+        // ì‘ë‹µí•©ë‹ˆë‹¤.
+        response.redirect('/');
+    });
 });
 
 app.get('/edit/:id', function (request, response) {
-  // ÆÄÀÏÀ» ÀĞ½À´Ï´Ù.
-  fs.readFile('9-edit.html', 'utf8', function (error, data) {
-    // µ¥ÀÌÅÍº£ÀÌ½º Äõ¸®¸¦ ½ÇÇàÇÕ´Ï´Ù.
-    client.query('SELECT * FROM products WHERE id = ?', [
-        request.params.id
-    ], function (error, result) {
-      // ÀÀ´äÇÕ´Ï´Ù.
-      response.send(ejs.render(data, {
-        data: result[0]
-      }));
+    // íŒŒì¼ì„ ì½ìŠµë‹ˆë‹¤.
+    fs.readFile('9-edit.html', 'utf8', function (error, data) {
+        // ë°ì´í„°ë² ì´ìŠ¤ ì¿¼ë¦¬ë¥¼ ì‹¤í–‰í•©ë‹ˆë‹¤.
+        client.query('SELECT * FROM products WHERE id = ?', [
+            request.params.id
+        ], function (error, result) {
+            // ì‘ë‹µí•©ë‹ˆë‹¤.
+            response.send(ejs.render(data, {
+                data: result[0]
+            }));
+        });
     });
-  });
 });
 
 app.post('/edit/:id', function (request, response) {
-  // º¯¼ö¸¦ ¼±¾ğÇÕ´Ï´Ù.
-  var body = request.body;
-  // µ¥ÀÌÅÍº£ÀÌ½º Äõ¸®¸¦ ½ÇÇàÇÕ´Ï´Ù.
-  client.query('UPDATE products SET name=?, modelnumber=?, series=? WHERE id=?', [body.name, body.modelnumber, body.series, request.params.id], function () {
-    // ÀÀ´äÇÕ´Ï´Ù.
-    response.redirect('/');
-  });
+    // ë³€ìˆ˜ë¥¼ ì„ ì–¸í•©ë‹ˆë‹¤.
+    var body = request.body;
+    // ë°ì´í„°ë² ì´ìŠ¤ ì¿¼ë¦¬ë¥¼ ì‹¤í–‰í•©ë‹ˆë‹¤.
+    client.query('UPDATE products SET name=?, modelnumber=?, series=? WHERE id=?', [body.name, body.modelnumber, body.series, request.params.id], function () {
+        // ì‘ë‹µí•©ë‹ˆë‹¤.
+        response.redirect('/');
+    });
 });

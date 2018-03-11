@@ -1,14 +1,14 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var mysql = require('mysql');
 
-// µ¥ÀÌÅÍº£ÀÌ½º¿Í ¿¬°áÇÕ´Ï´Ù.
+// ë°ì´í„°ë² ì´ìŠ¤ì™€ ì—°ê²°í•©ë‹ˆë‹¤.
 var client = mysql.createConnection({
-  user: 'root',
-  password: 'ºñ¹Ğ¹øÈ£',
-  database: 'Company'
+    user: 'root',
+    password: 'thinkfree',
+    database: 'Company'
 });
 
-// µ¥ÀÌÅÍº£ÀÌ½º Äõ¸®¸¦ ½ÇÇàÇÕ´Ï´Ù.
+// ë°ì´í„°ë² ì´ìŠ¤ ì¿¼ë¦¬ë¥¼ ì‹¤í–‰í•©ë‹ˆë‹¤.
 client.query('INSERT INTO products (name, modelnumber, series) VALUES (?, ?, ?)', [
     'Name Value', 'Model Number Value', 'Series Value'
 ], function (error, results, fields) {
