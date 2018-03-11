@@ -1,3 +1,3 @@
-// µ¥ÀÌÅÍº£ÀÌ½º¿¡ ¿¬°áÇÕ´Ï´Ù.
-var mongojs = require('mongojs')
+// ë°ì´í„°ë² ì´ìŠ¤ì— ì—°ê²°í•©ë‹ˆë‹¤.
+var mongojs = require('mongojs');
 var db = mongojs('node', ['products']);
