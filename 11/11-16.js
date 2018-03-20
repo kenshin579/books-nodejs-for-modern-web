@@ -1,37 +1,40 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var fs = require('fs');
 
-// ¼­¹ö¸¦ »ı¼ºÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 var server = require('http').createServer();
 var io = require('socket.io').listen(server);
 
-// ¼­¹ö¸¦ ½ÇÇàÇÕ´Ï´Ù.
+// ì„œë²„ë¥¼ ì‹¤í–‰í•©ë‹ˆë‹¤.
 server.listen(52273, function () {
-  console.log('Server Running at http://127.0.0.1:52273');
+    console.log('Server Running at http://127.0.0.1:52273');
 });
 
-// À¥ ¼­¹ö ÀÌº¥Æ®¸¦ ¿¬°áÇÕ´Ï´Ù.
+// ì›¹ ì„œë²„ ì´ë²¤íŠ¸ë¥¼ ì—°ê²°í•©ë‹ˆë‹¤.
 server.on('request', function (request, response) {
-  // HTMLPage.html ÆÄÀÏÀ» ÀĞ½À´Ï´Ù.
-  fs.readFile('11-17.html', function (error, data) {
-    response.writeHead(200, { 'Content-Type': 'text/html' });
-    response.end(data);
-  });
+    // HTMLPage.html íŒŒì¼ì„ ì½ìŠµë‹ˆë‹¤.
+    fs.readFile('11-17.html', function (error, data) {
+        response.writeHead(200, {'Content-Type': 'text/html'});
+        response.end(data);
+    });
 });
 
-// ¼ÒÄÏ ¼­¹ö ÀÌº¥Æ®¸¦ ¿¬°áÇÕ´Ï´Ù.
+// ì†Œì¼“ ì„œë²„ ì´ë²¤íŠ¸ë¥¼ ì—°ê²°í•©ë‹ˆë‹¤.
 io.sockets.on('connection', function (socket) {
-  // ¹æ ÀÌ¸§À» ÀúÀåÇÒ º¯¼ö
-  var roomName = null;
+    // ë°© ì´ë¦„ì„ ì €ì¥í•  ë³€ìˆ˜
+    var roomName = null;
 
-  // join ÀÌº¥Æ®
-  socket.on('join', function (data) {
-    roomName = data;
-    socket.join(data);
-  });
+    // join ì´ë²¤íŠ¸
+    socket.on('join', function (data) {
+        roomName = data;
+        console.log("joining roomName: ", roomName);
+        socket.join(data);
+    });
 
-  // message ÀÌº¥Æ®
-  socket.on('message', function (data) {
-    io.sockets.in(roomName).emit('message', 'test');
-  });
+    // message ì´ë²¤íŠ¸
+    socket.on('message', function (data) {
+        io.sockets.to(roomName).emit('message', 'test input');
+    });
 });
+
+//todo: ì œëŒ€ë¡œ ì‹¤í–‰ì´ ì•ˆë¨

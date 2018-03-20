@@ -1,28 +1,28 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var http = require('http');
 var fs = require('fs');
 var socketio = require('socket.io');
 
-// À¥ ¼­¹ö¸¦ »ı¼ºÇÕ´Ï´Ù.
+// ì›¹ ì„œë²„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 var server = http.createServer(function (request, response) {
-  // HTMLPage.html ÆÄÀÏÀ» ÀĞ½À´Ï´Ù.
-  fs.readFile('11-10.html', function (error, data) {
-    response.writeHead(200, { 'Content-Type': 'text/html' });
-    response.end(data);
-  });
+    // HTMLPage.html íŒŒì¼ì„ ì½ìŠµë‹ˆë‹¤.
+    fs.readFile('11-10.html', function (error, data) {
+        response.writeHead(200, { 'Content-Type': 'text/html' });
+        response.end(data);
+    });
 }).listen(52273, function () {
-  console.log('Server running at http://127.0.0.1:52273');
+    console.log('Server running at http://127.0.0.1:52273');
 });
 
-// ¼ÒÄÏ ¼­¹ö¸¦ »ı¼º ¹× ½ÇÇàÇÕ´Ï´Ù.
+// ì†Œì¼“ ì„œë²„ë¥¼ ìƒì„± ë° ì‹¤í–‰í•©ë‹ˆë‹¤.
 var io = socketio.listen(server);
 io.sockets.on('connection', function (socket) {
-  // rint ÀÌº¥Æ®
-  socket.on('rint', function (data) {
-    // Å¬¶óÀÌ¾ğÆ®°¡ Àü¼ÛÇÑ µ¥ÀÌÅÍ¸¦ Ãâ·ÂÇÕ´Ï´Ù.
-    console.log('Client Send Data:', data);
+    // rint ì´ë²¤íŠ¸
+    socket.on('rint', function (data) {
+        // í´ë¼ì´ì–¸íŠ¸ê°€ ì „ì†¡í•œ ë°ì´í„°ë¥¼ ì¶œë ¥í•©ë‹ˆë‹¤.
+        console.log('Client Send Data:', data);
 
-    // Å¬¶óÀÌ¾ğÆ®¿¡ smart ÀÌº¥Æ®¸¦ ¹ß»ı½ÃÅµ´Ï´Ù.
-    socket.emit('smart', data);
-  });
+        // í´ë¼ì´ì–¸íŠ¸ì— smart ì´ë²¤íŠ¸ë¥¼ ë°œìƒì‹œí‚µë‹ˆë‹¤.
+        socket.emit('smart', data);
+    });
 });
