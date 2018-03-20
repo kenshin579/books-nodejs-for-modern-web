@@ -1,15 +1,15 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var net = require('net');
 var crypto = require('crypto');
 
-//º¯¼ö¸¦ ¼±¾ğÇÕ´Ï´Ù.
+//ë³€ìˆ˜ë¥¼ ì„ ì–¸í•©ë‹ˆë‹¤.
 var guid = '258EAFA5-E914-47DA-95CA-C5AB0DC85B11';
 
-// TCP ¼­¹ö¸¦ »ı¼ºÇÕ´Ï´Ù.
+// TCP ì„œë²„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 net.createServer(function (socket) {
-  socket.on('data', function (data) {
+    socket.on('data', function (data) {
 
-  });
+    });
 }).listen(52273, function () {
-  console.log('TCP Server Running at 127.0.0.1:52273');
+    console.log('TCP Server Running at 127.0.0.1:52273');
 });

@@ -1,14 +1,15 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var http = require('http');
 
-// ±â»óÃ»ÀÇ RSS µ¥ÀÌÅÍ¸¦ ±Ü¾î¿É´Ï´Ù.
+// ê¸°ìƒì²­ì˜ RSS ë°ì´í„°ë¥¼ ê¸ì–´ì˜µë‹ˆë‹¤.
 http.get({
-  host: 'www.kma.go.kr',
-  path: '/weather/forecast/mid-term-rss.jsp?stnId=108'
+    host: 'www.kma.go.kr',
+    path: '/weather/forecast/mid-term-rss.jsp?stnId=108'
 }, function (response) {
-  // µ¥ÀÌÅÍ¸¦ ´Ù¿î·ÎµåÇÕ´Ï´Ù.
-  response.setEncoding('utf8');
-  response.on('data', function (data) {
-    console.log('Data Download');
-  });
+    // ë°ì´í„°ë¥¼ ë‹¤ìš´ë¡œë“œí•©ë‹ˆë‹¤.
+    response.setEncoding('utf8');
+    response.on('data', function (data) {
+        console.log("data", data);
+        console.log('Data Download');
+    });
 });

@@ -1,13 +1,13 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var net = require('net');
 
-// TCP ¼­¹ö¸¦ »ı¼ºÇÕ´Ï´Ù.
+// TCP ì„œë²„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 net.createServer(function (socket) {
-  // ÀÌº¥Æ®¸¦ ¿¬°áÇÕ´Ï´Ù.
-  socket.on('data', function (data) {
-    // ÀÔ·Â¹ŞÀº µ¥ÀÌÅÍ¸¦ Ãâ·ÂÇÕ´Ï´Ù.
-    console.log(data.toString('utf8'));
-  });
+    // ì´ë²¤íŠ¸ë¥¼ ì—°ê²°í•©ë‹ˆë‹¤.
+    socket.on('data', function (data) {
+        // ì…ë ¥ë°›ì€ ë°ì´í„°ë¥¼ ì¶œë ¥í•©ë‹ˆë‹¤.
+        console.log(data.toString('utf8'));
+    });
 }).listen(52273, function () {
-  console.log('TCP Server Running at 127.0.0.1:52273');
+    console.log('TCP Server Running at 127.0.0.1:52273');
 });

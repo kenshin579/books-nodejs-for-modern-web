@@ -1,83 +1,83 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var net = require('net');
 var crypto = require('crypto');
 
-//º¯¼ö¸¦ ¼±¾ğÇÕ´Ï´Ù.
+//ë³€ìˆ˜ë¥¼ ì„ ì–¸í•©ë‹ˆë‹¤.
 var guid = '258EAFA5-E914-47DA-95CA-C5AB0DC85B11';
 
-// TCP ¼­¹ö¸¦ »ı¼ºÇÕ´Ï´Ù.
+// TCP ì„œë²„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 net.createServer(function (socket) {
-  socket.on('data', function (data) {
-    if (/websocket/.test(data.toString())) {
-      // Socket Key¸¦ ÃßÃâÇÕ´Ï´Ù.
-      var headers = data.toString().split('\n');
-      var socketKey = '';
-      headers.forEach(function (item) {
-        var dictionary = item.split(':');
-        if (dictionary.length == 2 && dictionary[0].toLowerCase().trim() == 'sec-websocket-key') {
-          socketKey = dictionary[1].trim();
+    socket.on('data', function (data) {
+        if (/websocket/.test(data.toString())) {
+            // Socket Keyë¥¼ ì¶”ì¶œí•©ë‹ˆë‹¤.
+            var headers = data.toString().split('\n');
+            var socketKey = '';
+            headers.forEach(function (item) {
+                var dictionary = item.split(':');
+                if (dictionary.length == 2 && dictionary[0].toLowerCase().trim() == 'sec-websocket-key') {
+                    socketKey = dictionary[1].trim();
+                }
+            });
+
+            // Response Keyë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
+            var longKey = socketKey + guid;
+            var shasum = crypto.createHash('sha1').update(longKey);
+            var outputKey = shasum.digest('base64');
+
+            // ì‘ë‹µ í—¤ë”ë¥¼ ì‘ì„±í•©ë‹ˆë‹¤.
+            socket.write('HTTP/1.1 101 Switching Protocols\r\n');
+            socket.write('Upgrade: WebSocket\r\n');
+            socket.write('Connection: Upgrade\r\n');
+            socket.write('Sec-WebSocket-Accept: ' + outputKey + '\r\n\r\n');
+
+            // ë©”ì‹œì§€ë¥¼ ì „ë‹¬í•©ë‹ˆë‹¤.
+            setInterval(function () {
+                var output = 'Hello Web Socket Server .. !'
+                var frameBuffer = new Buffer(2 + output.length);
+                frameBuffer[0] = 0x81; // 1000 0001
+                frameBuffer[1] = output.length;
+                for (var i = 0; i < output.length; i++) {
+                    frameBuffer[i + 2] = output.charCodeAt(i)
+                }
+                socket.write(frameBuffer);
+            }, 1000);
+        } else if (/HTTP/.test(data.toString())) {
+            // HTML ë¬¸ìì—´ ë°°ì—´ì„ ìƒì„±í•©ë‹ˆë‹¤.
+            var output = [];
+            output.push('<script>');
+            output.push('    var socket = new WebSocket("ws://localhost:52273/")');
+            output.push('    socket.onopen = function (event) {');
+            output.push('        console.log("Web Socket Open.");');
+            output.push('        setInterval(function () {');
+            output.push('            socket.send("From Client");');
+            output.push('        }, 1000);');
+            output.push('    };');
+            output.push('    socket.onerror = function (error) {');
+            output.push('        console.log(error);');
+            output.push('    };');
+            output.push('    socket.onmessage = function (event) {');
+            output.push('        console.log("Web Socket Data: " + event.data);');
+            output.push('    };');
+            output.push('    socket.onclose = function (event) {');
+            output.push('        console.log("Web Socket Close.");');
+            output.push('    };');
+            output.push('</script>');
+
+            // ë¬¸ìì—´ë¡œ ë³€í™˜í•©ë‹ˆë‹¤.
+            output = output.join('\n');
+
+            // ì‘ë‹µ í—¤ë”ë¥¼ ì‘ì„±í•©ë‹ˆë‹¤.
+            socket.write('HTTP/1.1 200 OK\r\n');
+            socket.write('Server: RintIanTta Node.js Custom Server\r\n');
+            socket.write('Content-Type: text/html\r\n');
+            socket.write('Content-Length: ' + output.length + '\r\n');
+            socket.write('\r\n');
+            socket.write(output);
+            socket.end();
+        } else {
+
         }
-      });
-
-      // Response Key¸¦ »ı¼ºÇÕ´Ï´Ù.
-      var longKey = socketKey + guid;
-      var shasum = crypto.createHash('sha1').update(longKey);
-      var outputKey = shasum.digest('base64');
-
-      // ÀÀ´ä Çì´õ¸¦ ÀÛ¼ºÇÕ´Ï´Ù.
-      socket.write('HTTP/1.1 101 Switching Protocols\r\n');
-      socket.write('Upgrade: WebSocket\r\n');
-      socket.write('Connection: Upgrade\r\n');
-      socket.write('Sec-WebSocket-Accept: ' + outputKey + '\r\n\r\n');
-
-      // ¸Ş½ÃÁö¸¦ Àü´ŞÇÕ´Ï´Ù.
-      setInterval(function () {
-        var output = 'Hello Web Socket Server .. !'
-        var frameBuffer = new Buffer(2 + output.length);
-        frameBuffer[0] = 0x81; // 1000 0001
-        frameBuffer[1] = output.length;
-        for (var i = 0; i < output.length; i++) {
-          frameBuffer[i + 2] = output.charCodeAt(i)
-        }
-        socket.write(frameBuffer);
-      }, 1000);
-    } else if (/HTTP/.test(data.toString())) {
-      // HTML ¹®ÀÚ¿­ ¹è¿­À» »ı¼ºÇÕ´Ï´Ù.
-      var output = [];
-      output.push('<script>');
-      output.push('    var socket = new WebSocket("ws://localhost:52273/")');
-      output.push('    socket.onopen = function (event) {');
-      output.push('        console.log("Web Socket Open.");');
-      output.push('        setInterval(function () {');
-      output.push('            socket.send("From Client");');
-      output.push('        }, 1000);');
-      output.push('    };');
-      output.push('    socket.onerror = function (error) {');
-      output.push('        console.log(error);');
-      output.push('    };');
-      output.push('    socket.onmessage = function (event) {');
-      output.push('        console.log("Web Socket Data: " + event.data);');
-      output.push('    };');
-      output.push('    socket.onclose = function (event) {');
-      output.push('        console.log("Web Socket Close.");');
-      output.push('    };');
-      output.push('</script>');
-
-      // ¹®ÀÚ¿­·Î º¯È¯ÇÕ´Ï´Ù.
-      output = output.join('\n');
-
-      // ÀÀ´ä Çì´õ¸¦ ÀÛ¼ºÇÕ´Ï´Ù.
-      socket.write('HTTP/1.1 200 OK\r\n');
-      socket.write('Server: RintIanTta Node.js Custom Server\r\n');
-      socket.write('Content-Type: text/html\r\n');
-      socket.write('Content-Length: ' + output.length + '\r\n');
-      socket.write('\r\n');
-      socket.write(output);
-      socket.end();
-    } else {
-
-    }
-  });
+    });
 }).listen(52273, function () {
-  console.log('TCP Server Running at 127.0.0.1:52273');
+    console.log('TCP Server Running at 127.0.0.1:52273');
 });

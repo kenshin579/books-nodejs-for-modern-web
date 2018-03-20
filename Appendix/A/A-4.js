@@ -1,18 +1,18 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var net = require('net');
 
-// ¸ğµâÀ» »ç¿ëÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì‚¬ìš©í•©ë‹ˆë‹¤.
 var socket = net.connect(52273, '127.0.0.1', function () {
-  console.log('Client Start');
+    console.log('Client Start');
 });
 
-// ÀÌº¥Æ®¸¦ ¿¬°áÇÕ´Ï´Ù.
+// ì´ë²¤íŠ¸ë¥¼ ì—°ê²°í•©ë‹ˆë‹¤.
 socket.on('data', function (data) {
-  console.log(data.toString());
+    console.log(data.toString());
 });
 
-// ÀÔ·ÂÀ» È°¼ºÈ­ÇÕ´Ï´Ù.
+// ì…ë ¥ì„ í™œì„±í™”í•©ë‹ˆë‹¤.
 process.stdin.resume();
 process.stdin.on('data', function (chunk) {
-  socket.write('ECHO: ' + chunk);
+    socket.write('ECHO: ' + chunk);
 });

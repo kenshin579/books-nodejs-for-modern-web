@@ -1,21 +1,23 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var http = require('http');
 var fs = require('fs');
 
-// ±â»óÃ»ÀÇ RSS µ¥ÀÌÅÍ¸¦ ±Ü¾î¿É´Ï´Ù.
+// ê¸°ìƒì²­ì˜ RSS ë°ì´í„°ë¥¼ ê¸ì–´ì˜µë‹ˆë‹¤.
 http.get({
-  host: 'www.kma.go.kr',
-  path: '/weather/forecast/mid-term-rss.jsp?stnId=108'
+    host: 'www.kma.go.kr',
+    path: '/weather/forecast/mid-term-rss.jsp?stnId=108'
 }, function (response) {
-  // º¯¼ö¸¦ ¼±¾ğÇÕ´Ï´Ù.
-  var result = '';
+    // ë³€ìˆ˜ë¥¼ ì„ ì–¸í•©ë‹ˆë‹¤.
+    var result = '';
 
-  // µ¥ÀÌÅÍ¸¦ ´Ù¿î·ÎµåÇÕ´Ï´Ù.
-  response.setEncoding('utf8');
-  response.on('end', function () {
-    // XMLFile.xml ÆÄÀÏÀ» ¾¹´Ï´Ù.
-    fs.writeFile('XMLFile.xml', result);
-  }).on('data', function (data) {
-    result += data;
-  });
+    // ë°ì´í„°ë¥¼ ë‹¤ìš´ë¡œë“œí•©ë‹ˆë‹¤.
+    response.setEncoding('utf8');
+    response.on('end', function () {
+        // XMLFile.xml íŒŒì¼ì„ ì”ë‹ˆë‹¤.
+        fs.writeFileSync('XMLFile.xml', result);
+    }).on('data', function (data) {
+        result += data;
+    });
 });
+
+//todo: ë™ì‘ì´ ì•ˆë¨

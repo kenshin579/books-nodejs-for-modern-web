@@ -1,18 +1,18 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var net = require('net');
 
-// TCP ¼­¹ö¸¦ »ı¼ºÇÕ´Ï´Ù.
+// TCP ì„œë²„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 net.createServer(function (socket) {
-  // ÀÀ´ä Çì´õ¸¦ ÀÛ¼ºÇÕ´Ï´Ù.
-  socket.write('HTTP/1.1 200 OK\n');
-  socket.write('Server: RintIanTta Node.js Custom Server\n');
-  socket.write('Content-Type: text/html\n');
-  socket.write('Content-Length: 21\n');
-  socket.write('\n');
-  socket.write('<h1>Hello World!</h1>');
+    // ì‘ë‹µ í—¤ë”ë¥¼ ì‘ì„±í•©ë‹ˆë‹¤.
+    socket.write('HTTP/1.1 200 OK\n');
+    socket.write('Server: RintIanTta Node.js Custom Server\n');
+    socket.write('Content-Type: text/html\n');
+    socket.write('Content-Length: 21\n');
+    socket.write('\n');
+    socket.write('<h1>Hello World!</h1>');
 
-  // ÀÀ´äÇÕ´Ï´Ù.
-  socket.end();
+    // ì‘ë‹µí•©ë‹ˆë‹¤.
+    socket.end();
 }).listen(52273, function () {
-  console.log('TCP Server Running at 127.0.0.1:52273');
+    console.log('TCP Server Running at 127.0.0.1:52273');
 });
