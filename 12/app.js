@@ -17,7 +17,7 @@ var seats = [
     [1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1],
     [1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1],
     [1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1],
-    [1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1],
+    [1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1]
 ];
 
 // 웹 서버를 생성합니다.
@@ -43,6 +43,7 @@ server.listen(52273, function () {
 var io = socketio.listen(server);
 io.sockets.on('connection', function (socket) {
     socket.on('reserve', function (data) {
+        console.log("reserve data", data);
         seats[data.y][data.x] = 2;
         io.sockets.emit('reserve', data);
     });
