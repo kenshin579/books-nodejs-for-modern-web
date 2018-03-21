@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
@@ -10,7 +10,7 @@
         $(document).ready(function () {
             // 함수를 선언합니다.
             function changeIcon(target, from, to) {
-              alert(from +  to);
+                alert(from + to);
                 $(target).removeClass(from).addClass(to);
             }
 
@@ -29,7 +29,7 @@
 
             // 문서 객체 이벤트를 연결합니다.
             $('.product > a[data-icon]').click(function () {
-                if ($(this).attr('toggle') != 'off') {
+                if ($(this).attr('toggle') !== 'off') {
                     // 변수를 선언합니다.
                     var index = $(this).attr('data-index');
 
@@ -69,27 +69,27 @@
     </script>
 </head>
 <body>
-    <div data-role="page">
-        <div data-role="header">
-            <h1>Store</h1>
-        </div>
-        <div data-role="content">
-            <ul id="listview" data-role="listview" data-inset="true"
-                data-filter="true">
-                <li data-role="list-divider">products</li>
-                <% products.forEach(function (item, index) { %>
-                <li class="product" data-index="<%= item.index %>">
-                    <a href="#">
-                        <img src="chrome.png" />
-                        <h3><%= item.name %></h3>
-                        <p><%= item.price %>원</p>
-                        <span class="ui-li-count"><%= item.count %></span>
-                    </a>
-                    <a href="#" data-icon="heart" data-index="<%= item.index %>"></a>
-                </li>
-                <% }); %>
-            </ul>
-        </div>
+<div data-role="page">
+    <div data-role="header">
+        <h1>Store</h1>
     </div>
+    <div data-role="content">
+        <ul id="listview" data-role="listview" data-inset="true"
+            data-filter="true">
+            <li data-role="list-divider">products</li>
+            <% products.forEach(function (item, index) { %>
+            <li class="product" data-index="<%= item.index %>">
+                <a href="#">
+                    <img src="chrome.png"/>
+                    <h3><%= item.name %></h3>
+                    <p><%= item.price %>원</p>
+                    <span class="ui-li-count"><%= item.count %></span>
+                </a>
+                <a href="#" data-icon="heart" data-index="<%= item.index %>"></a>
+            </li>
+            <% }); %>
+        </ul>
+    </div>
+</div>
 </body>
 </html>

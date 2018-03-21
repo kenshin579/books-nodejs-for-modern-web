@@ -1,10 +1,10 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var fs = require('fs');
 var ejs = require('ejs');
 var http = require('http');
 var express = require('express');
 
-// »ı¼ºÀÚ ÇÔ¼ö¸¦ ¼±¾ğÇÕ´Ï´Ù.
+// ìƒì„±ì í•¨ìˆ˜ë¥¼ ì„ ì–¸í•©ë‹ˆë‹¤.
 var counter = 0;
 function Product(name, image, price, count) {
     this.index = counter++;
@@ -14,7 +14,7 @@ function Product(name, image, price, count) {
     this.count = count;
 }
 
-// º¯¼ö¸¦ ¼±¾ğÇÕ´Ï´Ù.
+// ë³€ìˆ˜ë¥¼ ì„ ì–¸í•©ë‹ˆë‹¤.
 var products = [
     new Product('JavaScript', 'chrome.png', 28000, 30),
     new Product('jQuery', 'chrome.png', 28000, 30),
@@ -25,86 +25,86 @@ var products = [
     new Product('EJS', 'chrome.png', 12000, 30)
 ];
 
-// À¥ ¼­¹ö¸¦ »ı¼ºÇÕ´Ï´Ù.
+// ì›¹ ì„œë²„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 var app = express();
 var server = http.createServer(app);
 
-// À¥ ¼­¹ö¸¦ ¼³Á¤ÇÕ´Ï´Ù.
+// ì›¹ ì„œë²„ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
 app.use(express.static(__dirname + '/public'));
 
-// ¶ó¿ìÆ®¸¦ ¼öÇàÇÕ´Ï´Ù.
+// ë¼ìš°íŠ¸ë¥¼ ìˆ˜í–‰í•©ë‹ˆë‹¤.
 app.get('/', function (request, response) {
-    // HTMLPage.html ÆÄÀÏÀ» ÀĞ½À´Ï´Ù.
+    // HTMLPage.html íŒŒì¼ì„ ì½ìŠµë‹ˆë‹¤.
     var htmlPage = fs.readFileSync('HTMLPage.html', 'utf8');
 
-    // ÀÀ´äÇÕ´Ï´Ù.
+    // ì‘ë‹µí•©ë‹ˆë‹¤.
     response.send(ejs.render(htmlPage, {
         products: products
     }));
 });
 
-// À¥ ¼­¹ö¸¦ ½ÇÇàÇÕ´Ï´Ù.
+// ì›¹ ì„œë²„ë¥¼ ì‹¤í–‰í•©ë‹ˆë‹¤.
 server.listen(52273, function () {
     console.log('Server Running at http://127.0.0.1:52273');
 });
 
-// ¼ÒÄÏ ¼­¹ö¸¦ »ı¼º ¹× ½ÇÇàÇÕ´Ï´Ù.
+// ì†Œì¼“ ì„œë²„ë¥¼ ìƒì„± ë° ì‹¤í–‰í•©ë‹ˆë‹¤.
 var io = require('socket.io').listen(server);
 io.sockets.on('connection', function (socket) {
-    // ÇÔ¼ö¸¦ ¼±¾ğÇÕ´Ï´Ù.
+    // í•¨ìˆ˜ë¥¼ ì„ ì–¸í•©ë‹ˆë‹¤.
     function onReturn(index) {
-        // ¹°°Ç °³¼ö¸¦ Áõ°¡½ÃÅµ´Ï´Ù.
+        // ë¬¼ê±´ ê°œìˆ˜ë¥¼ ì¦ê°€ì‹œí‚µë‹ˆë‹¤.
         products[index].count++;
 
-        // Å¸ÀÌ¸Ó¸¦ Á¦°ÅÇÕ´Ï´Ù.
+        // íƒ€ì´ë¨¸ë¥¼ ì œê±°í•©ë‹ˆë‹¤.
         clearTimeout(cart[index].timerID);
 
-        // Ä«Æ®¿¡¼­ ¹°°ÇÀ» Á¦°ÅÇÕ´Ï´Ù.
+        // ì¹´íŠ¸ì—ì„œ ë¬¼ê±´ì„ ì œê±°í•©ë‹ˆë‹¤.
         delete cart[index];
 
-        // count ÀÌº¥Æ®¸¦ ¹ß»ı½ÃÅµ´Ï´Ù.
+        // count ì´ë²¤íŠ¸ë¥¼ ë°œìƒì‹œí‚µë‹ˆë‹¤.
         io.sockets.emit('count', {
             index: index,
             count: products[index].count
         });
     };
 
-    // º¯¼ö¸¦ ¼±¾ğÇÕ´Ï´Ù.
+    // ë³€ìˆ˜ë¥¼ ì„ ì–¸í•©ë‹ˆë‹¤.
     var cart = {};
 
-    // cart ÀÌº¥Æ® 
+    // cart ì´ë²¤íŠ¸
     socket.on('cart', function (index) {
-        // ¹°°Ç °³¼ö¸¦ °¨¼Ò½ÃÅµ´Ï´Ù.
+        // ë¬¼ê±´ ê°œìˆ˜ë¥¼ ê°ì†Œì‹œí‚µë‹ˆë‹¤.
         products[index].count--;
 
-        // Ä«Æ®¿¡ ¹°°ÇÀ» ³Ö°í Å¸ÀÌ¸Ó¸¦ ½ÃÀÛÇÕ´Ï´Ù.
+        // ì¹´íŠ¸ì— ë¬¼ê±´ì„ ë„£ê³  íƒ€ì´ë¨¸ë¥¼ ì‹œì‘í•©ë‹ˆë‹¤.
         cart[index] = {};
         cart[index].index = index;
         cart[index].timerID = setTimeout(function () {
             onReturn(index);
         }, 1000 * 60 * 10);
 
-        // count ÀÌº¥Æ®¸¦ ¹ß»ı½ÃÅµ´Ï´Ù.
+        // count ì´ë²¤íŠ¸ë¥¼ ë°œìƒì‹œí‚µë‹ˆë‹¤.
         io.sockets.emit('count', {
             index: index,
             count: products[index].count
         });
     });
-    // buy ÀÌº¥Æ®
+    // buy ì´ë²¤íŠ¸
     socket.on('buy', function (index) {
-        // Å¸ÀÌ¸Ó¸¦ Á¦°ÅÇÕ´Ï´Ù.
+        // íƒ€ì´ë¨¸ë¥¼ ì œê±°í•©ë‹ˆë‹¤.
         clearTimeout(cart[index].timerID);
 
-        // Ä«Æ®¿¡¼­ ¹°°ÇÀ» Á¦°ÅÇÕ´Ï´Ù.
+        // ì¹´íŠ¸ì—ì„œ ë¬¼ê±´ì„ ì œê±°í•©ë‹ˆë‹¤.
         delete cart[index];
 
-        // count ÀÌº¥Æ®¸¦ ¹ß»ı½ÃÅµ´Ï´Ù.
+        // count ì´ë²¤íŠ¸ë¥¼ ë°œìƒì‹œí‚µë‹ˆë‹¤.
         io.sockets.emit('count', {
             index: index,
             count: products[index].count
         });
     });
-    // return ÀÌº¥Æ®
+    // return ì´ë²¤íŠ¸
     socket.on('return', function (index) {
         onReturn(index);
     });
