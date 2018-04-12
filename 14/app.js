@@ -1,63 +1,71 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var fs = require('fs');
 var http = require('http');
 var express = require('express');
 
-// µ¥ÀÌÅÍº£ÀÌ½º¿Í ¿¬°áÇÕ´Ï´Ù.
+// ë°ì´í„°ë² ì´ìŠ¤ì™€ ì—°ê²°í•©ë‹ˆë‹¤.
 var client = require('mysql').createConnection({
-  user: 'root',
-  password: 'ºñ¹Ğ¹øÈ£',
-  database: 'location'
+    user: 'root',
+    password: 'thinkfree',
+    database: 'Location'
 });
 
-// À¥ ¼­¹ö¸¦ »ı¼ºÇÕ´Ï´Ù.
+// ì›¹ ì„œë²„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 var app = express();
 var server = http.createServer(app);
 
+app.get('/', function (request, response) {
+    response.redirect('/tracker');
+});
+
 // GET - /tracker
 app.get('/tracker', function (request, response) {
-  // Tracker.html ÆÄÀÏÀ» Á¦°øÇÕ´Ï´Ù.
-  fs.readFile('Tracker.html', function (error, data) {
-    response.send(data.toString());
-  });
+    // Tracker.html íŒŒì¼ì„ ì œê³µí•©ë‹ˆë‹¤.
+    fs.readFile('Tracker.html', function (error, data) {
+        response.send(data.toString());
+    });
 });
 // GET - /observer
 app.get('/observer', function (request, response) {
-  // Observer.html ÆÄÀÏÀ» Á¦°øÇÕ´Ï´Ù.
-  fs.readFile('Observer.html', function (error, data) {
-    response.send(data.toString());
-  });
+    // Observer.html íŒŒì¼ì„ ì œê³µí•©ë‹ˆë‹¤.
+    fs.readFile('Observer.html', function (error, data) {
+        response.send(data.toString());
+    });
 });
 // GET - /ShowData
 app.get('/showdata', function (request, response) {
-  // µ¥ÀÌÅÍº£ÀÌ½ºÀÇ µ¥ÀÌÅÍ¸¦ Á¦°øÇÕ´Ï´Ù.
-  client.query('SELECT * FROM locations WHERE name=?', [request.params.name],
-      function (error, data) {
-        response.send(data);
-      });
+    // ë°ì´í„°ë² ì´ìŠ¤ì˜ ë°ì´í„°ë¥¼ ì œê³µí•©ë‹ˆë‹¤.
+    client.query('SELECT * FROM locations WHERE name=?', [request.query.name],
+        function (error, data) {
+            console.log("data", data);
+            response.send(data);
+        });
 });
 
-// À¥ ¼­¹ö¸¦ ½ÇÇàÇÕ´Ï´Ù.
+// ì›¹ ì„œë²„ë¥¼ ì‹¤í–‰í•©ë‹ˆë‹¤.
 server.listen(52273, function () {
-  console.log('Server Running at http://127.0.0.1:52273');
+    console.log('Server Running at http://127.0.0.1:52273');
 });
 
-// ¼ÒÄÏ ¼­¹ö¸¦ »ı¼º ¹× ½ÇÇàÇÕ´Ï´Ù.
+// ì†Œì¼“ ì„œë²„ë¥¼ ìƒì„± ë° ì‹¤í–‰í•©ë‹ˆë‹¤.
 var io = require('socket.io').listen(server);
 io.sockets.on('connection', function (socket) {
-  // join ÀÌº¥Æ®
-  socket.on('join', function (data) {
-    socket.join(data);
-  });
-  // location ÀÌº¥Æ®
-  socket.on('location', function (data) {
-    // µ¥ÀÌÅÍ¸¦ »ğÀÔÇÕ´Ï´Ù.
-    client.query('INSERT INTO locations(name, latitude, longitude, date) VALUES (?, ?, ?, NOW())', [data.name, data.latitude, data.longitude]);
-    // receive ÀÌº¥Æ®¸¦ ¹ß»ı½ÃÅµ´Ï´Ù.            
-    io.sockets.in(data.name).emit('receive', {
-      latitude: data.latitude,
-      longitude: data.longitude,
-      date: Date.now()
+    // join ì´ë²¤íŠ¸
+    socket.on('join', function (data) {
+        console.log("join...data", data);
+        socket.join(data);
     });
-  });
+
+    // location ì´ë²¤íŠ¸
+    socket.on('location', function (data) {
+        console.log("location... data", data);
+        // ë°ì´í„°ë¥¼ ì‚½ì…í•©ë‹ˆë‹¤.
+        client.query('INSERT INTO locations(name, latitude, longitude, date) VALUES (?, ?, ?, NOW())', [data.name, data.latitude, data.longitude]);
+        // receive ì´ë²¤íŠ¸ë¥¼ ë°œìƒì‹œí‚µë‹ˆë‹¤.
+        io.sockets.in(data.name).emit('receive', {
+            latitude: data.latitude,
+            longitude: data.longitude,
+            date: Date.now()
+        });
+    });
 });

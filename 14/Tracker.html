@@ -2,9 +2,9 @@
 <html>
 <head>
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="apple-touch-icon" href="/img/favicon.ico"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <link rel="apple-touch-icon" href="/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
@@ -55,27 +55,27 @@
     </script>
 </head>
 <body>
-    <!-- 아이디 등록 페이지 -->
-    <div data-role="page">
-        <div data-role="header" data-theme="b">
-            <h1>Location Tracker</h1>
-        </div>
-        <div data-role="content">
-            <div data-role="fieldcontain">
-                <label for="textinput">Name</label>
-                <input type="text" id="textinput" />
-            </div>
-            <a href="#tracker" class="ui-btn ui-btn-b">Start Track</a>
-        </div>
+<!-- 아이디 등록 페이지 -->
+<div data-role="page">
+    <div data-role="header" data-theme="b">
+        <h1>Location Tracker</h1>
     </div>
-    <!-- 위치 추적 페이지 -->
-    <div data-role="page" id="tracker">
-        <div data-role="header" data-theme="b">
-            <h1>Location Tracker</h1>
+    <div data-role="content">
+        <div data-role="fieldcontain">
+            <label for="textinput">Name</label>
+            <input type="text" id="textinput"/>
         </div>
-        <div data-role="content">
-            <ul id="listview" data-role="listview" data-inset="true"></ul>
-        </div>
+        <a href="#tracker" class="ui-btn ui-btn-b">Start Track</a>
     </div>
+</div>
+<!-- 위치 추적 페이지 (Start Track 버튼 클릭시 이걸로 대체됨) -->
+<div data-role="page" id="tracker">
+    <div data-role="header" data-theme="b">
+        <h1>Location Tracker</h1>
+    </div>
+    <div data-role="content">
+        <ul id="listview" data-role="listview" data-inset="true"></ul>
+    </div>
+</div>
 </body>
 </html>
