@@ -1,6 +1,6 @@
-// ¸ðµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var local = require('booklocal');
-// ¸ðµâ ÀÚÃ¼¸¦ »ç¿ëÇÕ´Ï´Ù.
+// ëª¨ë“ˆ ìžì²´ë¥¼ ì‚¬ìš©í•©ë‹ˆë‹¤.
 local();
-// ¸ðµâÀÇ ¼Ó¼ºÀ» »ç¿ëÇÕ´Ï´Ù.
+// ëª¨ë“ˆì˜ ì†ì„±ì„ ì‚¬ìš©í•©ë‹ˆë‹¤.
 console.log(local.number);
