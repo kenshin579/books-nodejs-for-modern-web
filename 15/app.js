@@ -24,7 +24,7 @@ app.get('/', function (request, response) {
 
 app.get('/canvas/:room', function (request, response) {
     fs.readFile('canvas.html', 'utf8', function (error, data) {
-        response.send(ejs.render(data, {
+        response.send(ejs.render(data, { //render() ejs 페이지를 HTML 페이지로 변환해줌
             room: request.params.room
         }));
     });
@@ -33,7 +33,7 @@ app.get('/canvas/:room', function (request, response) {
 app.get('/room', function (request, response) {
     var rooms = Object.keys(io.sockets.adapter.rooms).filter(function (item) {
         return item.indexOf('/') < 0;
-    })
+    });
     response.send(rooms);
 });
 
@@ -43,13 +43,16 @@ io.sockets.on('connection', function (socket) {
     var roomId = "";
 
     socket.on('join', function (data) {
+        console.log("join: data: ", data);
         socket.join(data);
         roomId = data;
     });
     socket.on('draw', function (data) {
+        console.log("draw: data: ", data);
         io.sockets.in(roomId).emit('line', data);
     });
     socket.on('create_room', function (data) {
+        console.log("create_room: data: ", data);
         io.sockets.emit('create_room', data.toString());
     });
 });
