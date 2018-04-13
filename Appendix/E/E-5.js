@@ -1,6 +1,6 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
-var rint = require('./build/Release/bindings');
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
+var rint = require('./build/Release/binding');
 
-// ¸ğµâÀ» »ç¿ëÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì‚¬ìš©í•©ë‹ˆë‹¤.
 console.log(rint);
 console.log(rint.method(10000));

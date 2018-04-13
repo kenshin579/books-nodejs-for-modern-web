@@ -4,7 +4,7 @@
 using namespace v8;
 
 void init(Local<Object> exports) {
-	// Isolate °´Ã¼¸¦ »ý¼ºÇØ¾ß ±âº» ÀÚ·áÇüÀ» ¸¸µé ¼ö ÀÖ½À´Ï´Ù.
+	// Isolate ê°ì²´ë¥¼ ìƒì„±í•´ì•¼ ê¸°ë³¸ ìžë£Œí˜•ì„ ë§Œë“¤ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 	Isolate* isolate = exports->GetIsolate();
 	exports->Set(String::NewFromUtf8(isolate, "name"), String::NewFromUtf8(isolate, "Value"));
 }
