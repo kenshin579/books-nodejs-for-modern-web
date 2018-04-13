@@ -1,13 +1,13 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var fs = require('fs');
 var async = require('async');
 
-// º¯¼ö¸¦ ¼±¾ğÇÕ´Ï´Ù.
+// ë³€ìˆ˜ë¥¼ ì„ ì–¸í•©ë‹ˆë‹¤.
 var files = ['TextFile1.txt', 'TextFile2.txt', 'TextFile3.txt'];
 
-// ÆÄÀÏÀ» ÀĞ½À´Ï´Ù.
+// íŒŒì¼ì„ ì½ìŠµë‹ˆë‹¤.
 async.map(files, fs.readFile, function (error, results) {
-  console.log(results[0].toString('utf8'));
-  console.log(results[1].toString('utf8'));
-  console.log(results[2].toString('utf8'));
+    console.log(results[0].toString('utf8'));
+    console.log(results[1].toString('utf8'));
+    console.log(results[2].toString('utf8'));
 });

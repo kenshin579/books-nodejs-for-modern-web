@@ -1,22 +1,25 @@
-// request ¸ğµâÀ» »ç¿ëÇÕ´Ï´Ù.
+// request ëª¨ë“ˆì„ ì‚¬ìš©í•©ë‹ˆë‹¤.
+var cheerio = require('cheerio');
+var request = require('request');
+
 var targetUrl = 'http://www.hanbit.co.kr/media/books/new_book_list.html';
 request(targetUrl, function (error, response, body) {
-  // º¯¼ö¸¦ ¼±¾ğÇÕ´Ï´Ù.
-  var $ = jQuery = cheerio.load(body);
-  // µ¥ÀÌÅÍ¸¦ ÃßÃâÇÕ´Ï´Ù.
-  $('.sub_book_list').each(function (item) {
-    // º¯¼ö¸¦ ¼±¾ğÇÕ´Ï´Ù.
-    var title = $(this).find('.book_tit').text().trim();
-    var writer = $(this).find('.book_writer').text().trim();
+    // ë³€ìˆ˜ë¥¼ ì„ ì–¸í•©ë‹ˆë‹¤.
+    var $ = jQuery = cheerio.load(body);
+    // ë°ì´í„°ë¥¼ ì¶”ì¶œí•©ë‹ˆë‹¤.
+    $('.sub_book_list').each(function (item) {
+        // ë³€ìˆ˜ë¥¼ ì„ ì–¸í•©ë‹ˆë‹¤.
+        var title = $(this).find('.book_tit').text().trim();
+        var writer = $(this).find('.book_writer').text().trim();
 
-    // ÀúÀÚ Á¤º¸¸¦ ºĞÇØÇÕ´Ï´Ù.
-    writer = writer.split(",").map(function (item) {
-      return item.trim();
+        // ì €ì ì •ë³´ë¥¼ ë¶„í•´í•©ë‹ˆë‹¤.
+        writer = writer.split(",").map(function (item) {
+            return item.trim();
+        });
+
+        // ì¶œë ¥í•©ë‹ˆë‹¤.
+        console.log(title);
+        console.log(writer);
+        console.log();
     });
-
-    // Ãâ·ÂÇÕ´Ï´Ù.
-    console.log(title)
-    console.log(writer);
-    console.log();
-  });
 });

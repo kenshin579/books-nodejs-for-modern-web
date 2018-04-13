@@ -1,16 +1,16 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var fs = require('fs');
 
-// TextFile1.txt ÆÄÀÏÀ» ÀĞ½À´Ï´Ù.
-fs.readFile('TextFile1.txt', function (error, data1) {
-  // TextFile2.txt ÆÄÀÏÀ» ÀĞ½À´Ï´Ù.
-  fs.readFile('TextFile2.txt', function (error, data2) {
-    // TextFile3.txt ÆÄÀÏÀ» ÀĞ½À´Ï´Ù.
-    fs.readFile('TextFile3.txt', function (error, data3) {
-      // Ãâ·ÂÇÕ´Ï´Ù.
-      console.log(data1);
-      console.log(data2);
-      console.log(data3);
+// TextFile1.txt íŒŒì¼ì„ ì½ìŠµë‹ˆë‹¤.
+fs.readFile('TextFile1.txt', 'utf8', function (error, data1) {
+    // TextFile2.txt íŒŒì¼ì„ ì½ìŠµë‹ˆë‹¤.
+    fs.readFile('TextFile2.txt', 'utf8', function (error, data2) {
+        // TextFile3.txt íŒŒì¼ì„ ì½ìŠµë‹ˆë‹¤.
+        fs.readFile('TextFile3.txt', 'utf8', function (error, data3) {
+            // ì¶œë ¥í•©ë‹ˆë‹¤.
+            console.log(data1);
+            console.log(data2);
+            console.log(data3);
+        });
     });
-  });
 });

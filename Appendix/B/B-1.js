@@ -1,8 +1,8 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var request = require('request');
 
-// ¿äÃ»ÇÕ´Ï´Ù.
+// ìš”ì²­í•©ë‹ˆë‹¤.
 request('http://google.com', function (error, response, body) {
-  // Ãâ·ÂÇÕ´Ï´Ù.
-  console.log(body);
+    // ì¶œë ¥í•©ë‹ˆë‹¤.
+    console.log(body);
 });

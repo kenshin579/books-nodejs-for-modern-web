@@ -1,10 +1,10 @@
-// ¸ğµâÀ» ÃßÃâÇÕ´Ï´Ù.
+// ëª¨ë“ˆì„ ì¶”ì¶œí•©ë‹ˆë‹¤.
 var cheerio = require('cheerio');
 var request = require('request');
 
-// request ¸ğµâÀ» »ç¿ëÇÕ´Ï´Ù.
+// request ëª¨ë“ˆì„ ì‚¬ìš©í•©ë‹ˆë‹¤.
 var targetUrl = 'http://www.hanbit.co.kr/media/books/new_book_list.html';
 request(targetUrl, function (error, response, body) {
-  // º¯¼ö¸¦ ¼±¾ğÇÕ´Ï´Ù.
-  var $ = jQuery = cheerio.load(body);
+    // ë³€ìˆ˜ë¥¼ ì„ ì–¸í•©ë‹ˆë‹¤.
+    var $ = jQuery = cheerio.load(body);
 });
