@@ -1,0 +1,26 @@
+{
+  "name": "es6express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build5": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
+    "start5": "npm run build && node dist/app.js",
+    "start1": "babel-node app.js",
+    "start": "nodemon app.js --exec babel-node",
+    "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules, --source-maps inline --copy-files",
+    "serve": "npm run build && node dist/app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "~1.15.2",
+    "express": "^4.14.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "nodemon": "^1.17.4"
+  }
+}
