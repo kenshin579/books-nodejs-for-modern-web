@@ -1,1 +1,0 @@
-https://objectcomputing.com/resources/publications/sett/august-2015-modularizing-javascript-with-requirejs/
