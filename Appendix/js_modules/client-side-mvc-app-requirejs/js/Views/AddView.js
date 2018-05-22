@@ -1,17 +1,10 @@
-define([
-    'Views/AddView',
-    'Models/User'
-], function (AddView, User) {
+define(function () {
 
-    function start() {
-        AddView.render();
-        bindEvents();
+    function render(parameters) {
+        var appDiv = document.getElementById('app');
+        appDiv.innerHTML = '<input id="user-name" /><button id="add">Add this user</button>';
     }
 
-    /*
-    - event 등록 위치 : view에 event을 등록하고 controller에 있는 business logic method를 호출하는게 좋지만
-      간단한 예제로 controller에서 등록함
-     */
     function bindEvents() {
         document.getElementById('add').addEventListener('click', function () {
             var users = JSON.parse(localStorage.users);
@@ -27,6 +20,6 @@ define([
     }
 
     return {
-        start: start
+        render: render
     };
 });
