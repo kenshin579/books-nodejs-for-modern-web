@@ -1,0 +1,10 @@
+<ul id="people">
+    <% people.forEach(function(person) { %>
+    <%- include show.ejs %>
+    <% }) %>
+</ul>
+<h1>Add a Person</h1>
+<form id="add">
+    <input id="name" name="name" placeholder="Name"/>
+    <input type="submit" value="Add"/>
+</form>
