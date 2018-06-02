@@ -29,6 +29,7 @@ TaskController.prototype = {
     },
 
     enable: function () {
+        //View의 Event 함수를 등록함
         this.view.addTaskEvent.attach(this.addTaskHandler);
         this.view.completeTaskEvent.attach(this.completeTaskHandler);
         this.view.deleteTaskEvent.attach(this.deleteTaskHandler);

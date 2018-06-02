@@ -43,14 +43,13 @@ TaskView.prototype = {
     },
 
     enable: function () {
+        //UI component에 대한 callback 함수를 등록함
         this.$addTaskButton.click(this.addTaskButtonHandler);
         this.$container.on('click', '.js-task', this.selectOrUnselectTaskHandler);
         this.$container.on('click', '.js-complete-task-button', this.completeTaskButtonHandler);
         this.$container.on('click', '.js-delete-task-button', this.deleteTaskButtonHandler);
 
-        /**
-         * Event Dispatcher
-         */
+        //Event Dispatcher각 event에 함수를 등록함
         this.model.addTaskEvent.attach(this.addTaskHandler);
         this.model.addTaskEvent.attach(this.clearTaskTextBoxHandler);
         this.model.setTasksAsCompletedEvent.attach(this.setTasksAsCompletedHandler);
@@ -73,11 +72,10 @@ TaskView.prototype = {
         this.deleteTaskEvent.notify();
     },
 
-    selectOrUnselectTask: function () {
+    selectOrUnselectTask: function (event) {
         var taskIndex = $(event.target).attr("data-index");
-        console.log("taskIndex", taskIndex);
 
-        if ($(event.target).attr('data-task-selected') === 'false') {
+        if ($(event.target).attr('data-task-selected') == "false") {
             $(event.target).attr('data-task-selected', true);
             this.selectTaskEvent.notify({
                 taskIndex: taskIndex
@@ -97,24 +95,22 @@ TaskView.prototype = {
 
     buildList: function () {
         var tasks = this.model.getTasks();
-        var html = "";
         var $tasksContainer = this.$tasksContainer;
-
         $tasksContainer.html('');
-
         var index = 0;
 
         console.log("tasks" + JSON.stringify(tasks));
 
-
         for (var taskIndex in tasks) {
-            if (tasks[taskIndex].taskStatus === 'completed') {
-                html += '<div style="color:green;">';
+            var html = "";
+            console.log("tasks[taskIndex]" + JSON.stringify(tasks[taskIndex]));
+            if (tasks[taskIndex].taskStatus == 'completed') {
+                html += '<div style="text-decoration: line-through;">';
             } else {
                 html += '<div>';
             }
 
-            $tasksContainer.append(html + '<label><input type="checkbox" class="js-task" data-index=' + index + '"data-task-selected="false">' + tasks[taskIndex].taskName + '</label></div>');
+            $tasksContainer.append(html + '<label><input type="checkbox" class="js-task" data-index="' + index + '" data-task-selected="false">' + tasks[taskIndex].taskName + '</label></div>');
 
             index++;
         }
