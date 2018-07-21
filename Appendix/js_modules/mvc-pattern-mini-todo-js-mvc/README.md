@@ -7,7 +7,7 @@ requirejs로 모듈화함
 TodoController
 - init()
   ㅁ. Observable에 callback 함수 등록 : TodoView에 addTodo()를 등록함
-  
+- controller에서 view와 model을 가지고 있음.
 
 TodoModel
 - addTodo():
